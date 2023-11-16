@@ -17,6 +17,7 @@ async function bootstrap() {
       origin: [
         'http://localhost:3865',
         'https://openricecanadafrontend.vercel.app',
+        'https://ttiimmothy.github.io',
       ],
       credentials: true,
     }),
