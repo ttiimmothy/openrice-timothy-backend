@@ -121,7 +121,12 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -132,17 +137,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -150,6 +146,17 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -158,8 +165,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -189,9 +199,9 @@
   Put,
 } from '@nestjs/common';
 import { UserService } from './user.service';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { User } from './interfaces/user.interface';
-import { ApiTags } from '@nestjs/swagger';
+import { UpdateUserDto } from './dto/update_user.dto';
+import { ApiTags, ApiParam } from '@nestjs/swagger';
+import { UserEntity } from './dto/entity/user.entity';
 &nbsp;
 @ApiTags('user')
 @Controller('api/user')
@@ -199,23 +209,27 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 &nbsp;
   @Get()
-  async getUsers(): Promise&lt;User[]&gt; {
+  async getUsers(): Promise&lt;UserEntity[]&gt; {
     return await this.userService.getUsers();
   }
 &nbsp;
-  @Get(':id')
-  async getUserByID(@Param() params: { id: string }) {
-    return (await this.userService.getUserByID(params.id))[0];
+  @Get(':user_id')
+  @ApiParam({ name: 'user_id', required: true, type: String })
+  async getUserByID(@Param() params: { user_id: string }): Promise&lt;UserEntity&gt; {
+    return (await this.userService.getUserByID(params.user_id))[0];
   }
 &nbsp;
-  @Put(':id')
+  @Put(':user_id')
+  @ApiParam({ name: 'user_id', required: true, type: String })
   async updateUser(
-    @Param() params: { id: string },
+    @Param() params: { user_id: string },
     @Body() updateUserDto: UpdateUserDto,
-  ) {
-    const userFound = await this.userService.getUserByID(params.id);
+  ): Promise&lt;UserEntity&gt; {
+    const userFound = await this.userService.getUserByID(params.user_id);
     if (userFound) {
-      return (await this.userService.updateUser(params.id, updateUserDto))[0];
+      return (
+        await this.userService.updateUser(params.user_id, updateUserDto)
+      )[0];
     } else <span class="missing-if-branch" title="else path not taken" >E</span>{
 <span class="cstat-no" title="statement not covered" >      throw new NotFoundException('Bad request', {</span>
         cause: new Error(),
@@ -224,11 +238,12 @@ export class UserController {
     }
   }
 &nbsp;
-  @Delete(':id')
-  async deleteUser(@Param() params: { id: string }) {
-    const userFound = await this.userService.getUserByID(params.id);
+  @Delete(':user_id')
+  @ApiParam({ name: 'user_id', required: true, type: String })
+  async deleteUser(@Param() params: { user_id: string }): Promise&lt;UserEntity&gt; {
+    const userFound = await this.userService.getUserByID(params.user_id);
     if (userFound) {
-      return (await this.userService.deleteUser(params.id))[0];
+      return (await this.userService.deleteUser(params.user_id))[0];
     } else <span class="missing-if-branch" title="else path not taken" >E</span>{
 <span class="cstat-no" title="statement not covered" >      throw new NotFoundException('Bad request', {</span>
         cause: new Error(),
@@ -244,7 +259,7 @@ export class UserController {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-14T09:58:51.145Z
+                at 2023-11-19T12:25:22.912Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
