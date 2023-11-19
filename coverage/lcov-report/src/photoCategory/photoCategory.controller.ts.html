@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -83,44 +83,68 @@
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { Controller, Get, Param } from '@nestjs/common';</span>
-import { PhotoCategory } from './interfaces/photoCategory.interface';
-<span class="cstat-no" title="statement not covered" >import { PhotoCategoryService } from './photoCategory.service';</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Controller, Get, Param } from '@nestjs/common';
+import { PhotoCategoryService } from './photoCategory.service';
+import { ApiParam, ApiTags } from '@nestjs/swagger';
+import { PhotoCategoryEntity } from './dto/entity/photoCategory.entity';
 &nbsp;
-@Controller('api/photo/category')
-export <span class="cstat-no" title="statement not covered" >class <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >PhotoCategoryController </span>{</span></span>
-<span class="fstat-no" title="function not covered" >  constructor(private readonly <span class="cstat-no" title="statement not covered" >p</span>hotoCategoryService: P</span>hotoCategoryService) {}
+@ApiTags('photo category')
+// @Controller('api/photo/category') // We cannot use this, api/photo/:id with take over the control
+@Controller('api/photo-category')
+export class PhotoCategoryController {
+  constructor(private readonly photoCategoryService: PhotoCategoryService) {}
 &nbsp;
   @Get()
-<span class="fstat-no" title="function not covered" >  async <span class="cstat-no" title="statement not covered" ></span>getPhotoCategories(): Promise&lt;PhotoCategory[]&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    return await this.photoCategoryService.getPhotoCategories();</span>
+  async getPhotoCategories(): Promise&lt;PhotoCategoryEntity[]&gt; {
+    return await this.photoCategoryService.getPhotoCategories();
   }
 &nbsp;
-  @Get(':id')
-<span class="fstat-no" title="function not covered" >  async <span class="cstat-no" title="statement not covered" ></span>getPhotoCategoryByID(</span>
-    @Param() params: { id: string },
-  ): Promise&lt;PhotoCategory&gt; {
-<span class="cstat-no" title="statement not covered" >    return (await this.photoCategoryService.getPhotoCategoryByID(params.id))[0];</span>
+  @Get(':photo_category_id')
+  @ApiParam({ name: 'photo_category_id', required: true, type: String })
+  async getPhotoCategoryByID(
+    @Param() params: { photo_category_id: string },
+  ): Promise&lt;PhotoCategoryEntity&gt; {
+    return (
+      await this.photoCategoryService.getPhotoCategoryByID(
+        params.photo_category_id,
+      )
+    )[0];
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -130,7 +154,7 @@ export <span class="cstat-no" title="statement not covered" >class <span class="
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-14T09:58:51.145Z
+                at 2023-11-19T12:25:22.912Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
