@@ -34,9 +34,9 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: |
-            "./coverage/clover.xml"
-            "./coverage/coverage-final.json"
-            "./coverage/lcov.info"
+            "coverage/clover.xml"
+            "coverage/coverage-final.json"
+            "coverage/lcov.info"
           fail_ci_if_error: true
           flags: unit_test
           name: OpenriceCanadaBackend
