@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1700471282084" clover="3.2.0">
-  <project timestamp="1700471282084" name="All files">
-    <metrics statements="550" coveredstatements="542" conditionals="39" coveredconditionals="37" methods="143" coveredmethods="138" elements="732" coveredelements="717" complexity="0" loc="550" ncloc="550" packages="42" files="77" classes="77"/>
+<coverage generated="1700484695061" clover="3.2.0">
+  <project timestamp="1700484695061" name="All files">
+    <metrics statements="550" coveredstatements="543" conditionals="39" coveredconditionals="37" methods="143" coveredmethods="139" elements="732" coveredelements="719" complexity="0" loc="550" ncloc="550" packages="42" files="77" classes="77"/>
     <package name="src">
       <metrics statements="29" coveredstatements="29" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <file name="app.controller.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/app.controller.ts">
@@ -122,29 +122,29 @@
       </file>
     </package>
     <package name="src.global.csp">
-      <metrics statements="15" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <metrics statements="15" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
       <file name="csp.middleware.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/global/csp/csp.middleware.ts">
         <metrics statements="7" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
       </file>
       <file name="csp.module.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/global/csp/csp.module.ts">
-        <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
       </file>
       <file name="csp.service.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/global/csp/csp.service.ts">
         <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
       </file>
     </package>
