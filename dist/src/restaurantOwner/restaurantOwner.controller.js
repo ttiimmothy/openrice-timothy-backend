@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RestaurantOwnerController = void 0;
 const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
-const create_restaurantOwner_dto_1 = require("./dto/create-restaurantOwner.dto");
-const update_restaurantOwner_dto_1 = require("./dto/update-restaurantOwner.dto");
+const create_restaurant_owner_dto_1 = require("./dto/create_restaurant_owner.dto");
+const update_restaurant_owner_dto_1 = require("./dto/update_restaurant_owner.dto");
 const restaurantOwner_service_1 = require("./restaurantOwner.service");
 const swagger_1 = require("@nestjs/swagger");
 let RestaurantOwnerController = class RestaurantOwnerController {
@@ -38,10 +38,7 @@ let RestaurantOwnerController = class RestaurantOwnerController {
             return (await this.restaurantOwnerService.updateRestaurantOwner(params.restaurant_owner_id, updateRestaurantOwnerDto))[0];
         }
         else {
-            throw new common_1.NotFoundException('Bad request', {
-                cause: new Error(),
-                description: 'This restaurant owner cannot be found',
-            });
+            return { message: 'This restaurant owner cannot be found' };
         }
     }
     async deleteRestaurantOwner(params) {
@@ -50,10 +47,7 @@ let RestaurantOwnerController = class RestaurantOwnerController {
             return (await this.restaurantOwnerService.deleteRestaurantOwner(params.restaurant_owner_id))[0];
         }
         else {
-            throw new common_1.NotFoundException('Bad request', {
-                cause: new Error(),
-                description: 'This restaurant owner cannot be found',
-            });
+            return { message: 'This restaurant owner cannot be found' };
         }
     }
 };
@@ -79,23 +73,23 @@ __decorate([
     openapi.ApiResponse({ status: 201, type: require("./dto/entity/restaurantOwner.enttiy").RestaurantOwnerEntity }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_restaurantOwner_dto_1.CreateRestaurantOwnerDto]),
+    __metadata("design:paramtypes", [create_restaurant_owner_dto_1.CreateRestaurantOwnerDto]),
     __metadata("design:returntype", Promise)
 ], RestaurantOwnerController.prototype, "createRestaurantOwner", null);
 __decorate([
     (0, common_1.Put)(':restaurant_owner_id'),
     (0, swagger_1.ApiParam)({ name: 'restaurant_owner_id', required: true, type: String }),
-    openapi.ApiResponse({ status: 200, type: require("./dto/entity/restaurantOwner.enttiy").RestaurantOwnerEntity }),
+    openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, update_restaurantOwner_dto_1.UpdateRestaurantOwnerDto]),
+    __metadata("design:paramtypes", [Object, update_restaurant_owner_dto_1.UpdateRestaurantOwnerDto]),
     __metadata("design:returntype", Promise)
 ], RestaurantOwnerController.prototype, "updateRestaurantOwner", null);
 __decorate([
     (0, common_1.Delete)(':restaurant_owner_id'),
     (0, swagger_1.ApiParam)({ name: 'restaurant_owner_id', required: true, type: String }),
-    openapi.ApiResponse({ status: 200, type: require("./dto/entity/restaurantOwner.enttiy").RestaurantOwnerEntity }),
+    openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),

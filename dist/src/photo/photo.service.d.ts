@@ -1,5 +1,5 @@
 import { Knex } from 'knex';
-import { CreatePhotoDto } from './dto/create-photo.dto';
+import { CreatePhotoDto } from './dto/create_photo.dto';
 export declare class PhotoService {
     private readonly knex;
     constructor(knex: Knex);

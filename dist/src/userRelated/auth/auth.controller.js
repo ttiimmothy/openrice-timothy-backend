@@ -19,10 +19,10 @@ const swagger_1 = require("@nestjs/swagger");
 const jwtSimple = require("jwt-simple");
 const auth_service_1 = require("./auth.service");
 const user_service_1 = require("../user/user.service");
-const create_user_dto_1 = require("../user/dto/create-user.dto");
+const create_user_dto_1 = require("../user/dto/create_user.dto");
 const hash_1 = require("../../global/lib/hash");
 const auth_guard_1 = require("../../global/guards/auth.guard");
-const login_user_dto_1 = require("../user/dto/login-user.dto");
+const create_auth_dto_1 = require("./dto/create_auth.dto");
 let AuthController = class AuthController {
     constructor(authService, userService) {
         this.authService = authService;
@@ -82,7 +82,7 @@ __decorate([
     openapi.ApiResponse({ status: 201, type: require("./dto/entity/auth.entity").LoginResponse }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [login_user_dto_1.LoginUserDto]),
+    __metadata("design:paramtypes", [create_auth_dto_1.CreateAuthDto]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "login", null);
 __decorate([

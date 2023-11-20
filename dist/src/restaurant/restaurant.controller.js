@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RestaurantController = void 0;
 const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
-const create_restaurant_dto_1 = require("./dto/create-restaurant.dto");
-const update_restaurant_dto_1 = require("./dto/update-restaurant.dto");
+const create_restaurant_dto_1 = require("./dto/create_restaurant.dto");
+const update_restaurant_dto_1 = require("./dto/update_restaurant.dto");
 const restaurant_service_1 = require("./restaurant.service");
 const swagger_1 = require("@nestjs/swagger");
 const UserRole_1 = require("../global/utils/enums/UserRole");
@@ -53,27 +53,21 @@ let RestaurantController = class RestaurantController {
         return (await this.restaurantService.createRestaurant(createRestaurantDto))[0];
     }
     async updateRestaurant(params, updateRestaurantDto) {
-        const restaurantFound = await this.restaurantService.getRestaurantByID(params.id);
+        const restaurantFound = await this.restaurantService.getRestaurantByID(params.restaurant_id);
         if (restaurantFound) {
-            return (await this.restaurantService.updateRestaurant(params.id, updateRestaurantDto))[0];
+            return (await this.restaurantService.updateRestaurant(params.restaurant_id, updateRestaurantDto))[0];
         }
         else {
-            throw new common_1.NotFoundException('Bad request', {
-                cause: new Error(),
-                description: 'This restaurant cannot be found',
-            });
+            return { message: 'This restaurant cannot be found' };
         }
     }
     async deleteRestaurant(params) {
-        const restaurantFound = await this.restaurantService.getRestaurantByID(params.id);
+        const restaurantFound = await this.restaurantService.getRestaurantByID(params.restaurant_id);
         if (restaurantFound) {
-            return (await this.restaurantService.deleteRestaurant(params.id))[0];
+            return (await this.restaurantService.deleteRestaurant(params.restaurant_id))[0];
         }
         else {
-            throw new common_1.NotFoundException('Bad request', {
-                cause: new Error(),
-                description: 'This restaurant cannot be found',
-            });
+            return { message: 'This restaurant cannot be found' };
         }
     }
 };
@@ -112,7 +106,7 @@ __decorate([
 __decorate([
     (0, common_1.Put)(':restaurant_id'),
     (0, swagger_1.ApiParam)({ name: 'restaurant_id', required: true, type: String }),
-    openapi.ApiResponse({ status: 200, type: require("./dto/entity/restaurant.entity").RestaurantEntity }),
+    openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -122,7 +116,7 @@ __decorate([
 __decorate([
     (0, common_1.Delete)(':restaurant_id'),
     (0, swagger_1.ApiParam)({ name: 'restaurant_id', required: true, type: String }),
-    openapi.ApiResponse({ status: 200, type: require("./dto/entity/restaurant.entity").RestaurantEntity }),
+    openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),

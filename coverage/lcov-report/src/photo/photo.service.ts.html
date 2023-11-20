@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/10</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -97,25 +97,24 @@
 <a name='L32'></a><a href='#L32'>32</a>
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -126,8 +125,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -139,31 +137,30 @@ import { CreatePhotoDto } from './dto/create_photo.dto';
 &nbsp;
 @Injectable()
 export class PhotoService {
-<span class="fstat-no" title="function not covered" >  constructor(@I</span>nject('KnexConnection') private readonly <span class="cstat-no" title="statement not covered" >knex: Knex)</span> {}
+  constructor(@Inject('KnexConnection') private readonly knex: Knex) {}
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>getPhotos() {
-<span class="cstat-no" title="statement not covered" >    return await this.knex.select('*').from('photo');</span>
+  async getPhotos() {
+    return await this.knex.select('*').from('photo');
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>getPhotoByID(id: string) {
-<span class="cstat-no" title="statement not covered" >    return await this.knex.select('*').from('photo').where('photo_id', id);</span>
+  async getPhotoByID(id: string) {
+    return await this.knex.select('*').from('photo').where('photo_id', id);
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>createPhoto(photo: CreatePhotoDto) {
-<span class="cstat-no" title="statement not covered" >    return await this.knex</span>
+  async createPhoto(photo: CreatePhotoDto) {
+    return await this.knex
       .insert({
         ...photo,
         created_at: new Date(),
-        modified_at: new Date(),
         active: true,
       })
       .into('photo')
       .returning('*');
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>deletePhoto(id: string) {
-<span class="cstat-no" title="statement not covered" >    return await this.knex('photo')</span>
-      .update({ active: false, modified_at: new Date() })
+  async deletePhoto(id: string) {
+    return await this.knex('photo')
+      .update({ active: false })
       .where('photo_id', id)
       .returning('*');
   }
@@ -175,7 +172,7 @@ export class PhotoService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-19T12:25:22.912Z
+                at 2023-11-20T09:08:02.044Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

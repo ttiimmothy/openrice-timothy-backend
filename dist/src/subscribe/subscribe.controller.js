@@ -16,7 +16,7 @@ exports.SubscribeController = void 0;
 const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
 const subscribe_service_1 = require("./subscribe.service");
-const create_subscribe_dto_1 = require("./dto/create-subscribe.dto");
+const create_subscribe_dto_1 = require("./dto/create_subscribe.dto");
 const swagger_1 = require("@nestjs/swagger");
 let SubscribeController = class SubscribeController {
     constructor(subscribeService) {
@@ -37,17 +37,14 @@ let SubscribeController = class SubscribeController {
             return (await this.subscribeService.deleteSubscribe(params.subscribe_id))[0];
         }
         else {
-            throw new common_1.BadRequestException('Bad request', {
-                cause: new Error(),
-                description: 'This restaurant subscription cannot be found',
-            });
+            return { message: 'This restaurant subscription cannot be found' };
         }
     }
 };
 exports.SubscribeController = SubscribeController;
 __decorate([
     (0, common_1.Get)(),
-    openapi.ApiResponse({ status: 200, type: [Object] }),
+    openapi.ApiResponse({ status: 200, type: [require("./dto/entity/subscribe.entity").SubscribeEntity] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
@@ -55,7 +52,7 @@ __decorate([
 __decorate([
     (0, common_1.Get)(':subscribe_id'),
     (0, swagger_1.ApiParam)({ name: 'subscribe_id', required: true, type: String }),
-    openapi.ApiResponse({ status: 200, type: Object }),
+    openapi.ApiResponse({ status: 200, type: require("./dto/entity/subscribe.entity").SubscribeEntity }),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
@@ -63,7 +60,7 @@ __decorate([
 ], SubscribeController.prototype, "getSubscribeByID", null);
 __decorate([
     (0, common_1.Post)(),
-    openapi.ApiResponse({ status: 201, type: Object }),
+    openapi.ApiResponse({ status: 201, type: require("./dto/entity/subscribe.entity").SubscribeEntity }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_subscribe_dto_1.CreateSubscribeDto]),

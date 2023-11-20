@@ -1,5 +1,5 @@
-import { CreateRestaurantDto } from './dto/create-restaurant.dto';
-import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
+import { CreateRestaurantDto } from './dto/create_restaurant.dto';
+import { UpdateRestaurantDto } from './dto/update_restaurant.dto';
 import { RestaurantService } from './restaurant.service';
 import { RestaurantEntity } from './dto/entity/restaurant.entity';
 export declare class RestaurantController {
@@ -11,9 +11,13 @@ export declare class RestaurantController {
     }): Promise<RestaurantEntity>;
     createRestaurant(createRestaurantDto: CreateRestaurantDto): Promise<RestaurantEntity>;
     updateRestaurant(params: {
-        id: string;
-    }, updateRestaurantDto: UpdateRestaurantDto): Promise<RestaurantEntity>;
+        restaurant_id: string;
+    }, updateRestaurantDto: UpdateRestaurantDto): Promise<RestaurantEntity | {
+        message: string;
+    }>;
     deleteRestaurant(params: {
-        id: string;
-    }): Promise<RestaurantEntity>;
+        restaurant_id: string;
+    }): Promise<RestaurantEntity | {
+        message: string;
+    }>;
 }

@@ -1,6 +1,6 @@
 import { Knex } from 'knex';
-import { CreateRestaurantDto } from './dto/create-restaurant.dto';
-import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
+import { CreateRestaurantDto } from './dto/create_restaurant.dto';
+import { UpdateRestaurantDto } from './dto/update_restaurant.dto';
 export declare class RestaurantService {
     private readonly knex;
     constructor(knex: Knex);

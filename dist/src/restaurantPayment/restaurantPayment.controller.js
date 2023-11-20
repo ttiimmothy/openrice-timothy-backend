@@ -16,7 +16,7 @@ exports.RestaurantPaymentController = void 0;
 const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
 const restaurantPayment_service_1 = require("./restaurantPayment.service");
-const create_restaurantPayment_dto_1 = require("./dto/create-restaurantPayment.dto");
+const create_restaurant_payment_dto_1 = require("./dto/create_restaurant_payment.dto");
 const swagger_1 = require("@nestjs/swagger");
 let RestaurantPaymentController = class RestaurantPaymentController {
     constructor(restaurantPaymentService) {
@@ -37,10 +37,7 @@ let RestaurantPaymentController = class RestaurantPaymentController {
             return (await this.restaurantPaymentService.deleteRestaurantPayment(params.restaurant_payment_id))[0];
         }
         else {
-            throw new common_1.NotFoundException('Bad request', {
-                cause: new Error(),
-                description: 'This restaurant payment method cannot be found',
-            });
+            return { message: 'This restaurant payment method cannot be found' };
         }
     }
 };
@@ -66,13 +63,13 @@ __decorate([
     openapi.ApiResponse({ status: 201, type: require("./dto/entity/restaurantPayment.entity").RestaurantPaymentEntity }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_restaurantPayment_dto_1.CreateRestaurantPaymentDto]),
+    __metadata("design:paramtypes", [create_restaurant_payment_dto_1.CreateRestaurantPaymentDto]),
     __metadata("design:returntype", Promise)
 ], RestaurantPaymentController.prototype, "createRestaurantPayment", null);
 __decorate([
     (0, common_1.Delete)(':restaurant_payment_id'),
     (0, swagger_1.ApiParam)({ name: 'restaurant_payment_id', required: true, type: String }),
-    openapi.ApiResponse({ status: 200, type: require("./dto/entity/restaurantPayment.entity").RestaurantPaymentEntity }),
+    openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
