@@ -7,7 +7,7 @@ import * as dotenv from 'dotenv';
 import * as cors from 'cors';
 import helmet from 'helmet';
 
-dotenv.config();
+dotenv.config({ path: __dirname + '/../../src/secrets/keys/.env' });
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);

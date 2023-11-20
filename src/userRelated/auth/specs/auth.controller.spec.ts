@@ -2,14 +2,13 @@ import { Test, TestingModule } from '@nestjs/testing';
 import * as jwtSimple from 'jwt-simple';
 import * as dotenv from 'dotenv';
 import { Request } from 'express';
-
 import { AuthController } from '../auth.controller';
 import { AuthService } from '../auth.service';
 import { UserService } from '../../user/user.service';
 import { expectedUsersHashPassword } from './expectedUsersHashPassword';
 import { expectedUsers } from './expectedUsers';
 
-dotenv.config();
+dotenv.config({ path: __dirname + '/../../../secrets/keys/.env' });
 
 jest.mock('../auth.service');
 jest.mock('../../user/user.service');

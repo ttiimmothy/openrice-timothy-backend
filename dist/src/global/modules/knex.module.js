@@ -10,6 +10,7 @@ exports.KnexModule = void 0;
 const common_1 = require("@nestjs/common");
 const knex_1 = require("knex");
 const knexfile_1 = require("../../../knexfile");
+console.log(process.env.NODE_ENV);
 const configMode = process.env.NODE_ENV || 'development';
 const knexConfig = knexfile_1.default[configMode];
 let KnexModule = class KnexModule {
