@@ -1,5 +1,5 @@
 import { RestaurantPaymentService } from './restaurantPayment.service';
-import { CreateRestaurantPaymentDto } from './dto/create-restaurantPayment.dto';
+import { CreateRestaurantPaymentDto } from './dto/create_restaurant_payment.dto';
 import { RestaurantPaymentEntity } from './dto/entity/restaurantPayment.entity';
 export declare class RestaurantPaymentController {
     private readonly restaurantPaymentService;
@@ -11,5 +11,7 @@ export declare class RestaurantPaymentController {
     createRestaurantPayment(createRestaurantPaymentDto: CreateRestaurantPaymentDto): Promise<RestaurantPaymentEntity>;
     deleteRestaurantPayment(params: {
         restaurant_payment_id: string;
-    }): Promise<RestaurantPaymentEntity>;
+    }): Promise<RestaurantPaymentEntity | {
+        message: string;
+    }>;
 }

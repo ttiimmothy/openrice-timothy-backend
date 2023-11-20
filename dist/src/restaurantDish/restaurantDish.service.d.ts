@@ -1,5 +1,5 @@
 import { Knex } from 'knex';
-import { CreateRestaurantDishDto } from './dto/create-restaurantDish.dto';
+import { CreateRestaurantDishDto } from './dto/create_restaurant_dish.dto';
 export declare class RestaurantDishService {
     private readonly knex;
     constructor(knex: Knex);

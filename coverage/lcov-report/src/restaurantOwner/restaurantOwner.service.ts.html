@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.45% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/9</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -111,29 +111,28 @@
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,15 +146,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -168,44 +166,43 @@ import { UpdateRestaurantOwnerDto } from './dto/update_restaurant_owner.dto';
 &nbsp;
 @Injectable()
 export class RestaurantOwnerService {
-<span class="fstat-no" title="function not covered" >  constructor(@I</span>nject('KnexConnection') private readonly <span class="cstat-no" title="statement not covered" >knex: Knex)</span> {}
+  constructor(@Inject('KnexConnection') private readonly knex: Knex) {}
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>getRestaurantOwners() {
-<span class="cstat-no" title="statement not covered" >    return await this.knex.select('*').from('restaurant_owner');</span>
+  async getRestaurantOwners() {
+    return await this.knex.select('*').from('restaurant_owner');
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>getRestaurantOwnerByID(id: string) {
-<span class="cstat-no" title="statement not covered" >    return await this.knex</span>
+  async getRestaurantOwnerByID(id: string) {
+    return await this.knex
       .select('*')
       .from('restaurant_owner')
       .where('restaurant_owner_id', id);
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>createRestaurantOwner(restaurantOwner: CreateRestaurantOwnerDto) {
-<span class="cstat-no" title="statement not covered" >    return await this.knex</span>
+  async createRestaurantOwner(restaurantOwner: CreateRestaurantOwnerDto) {
+    return await this.knex
       .insert({
         ...restaurantOwner,
         created_at: new Date(),
-        modified_at: new Date(),
         active: true,
       })
       .into('restaurant_owner')
       .returning('*');
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>updateRestaurantOwner(
+  async updateRestaurantOwner(
     id: string,
     restaurantOwner: UpdateRestaurantOwnerDto,
   ) {
-<span class="cstat-no" title="statement not covered" >    return await this.knex('restaurant_owner')</span>
-      .update({ ...restaurantOwner, modified_at: new Date() })
+    return await this.knex('restaurant_owner')
+      .update(restaurantOwner)
       .where('restaurant_owner_id', id)
       .returning('*');
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>deleteRestaurantOwner(id: string) {
-<span class="cstat-no" title="statement not covered" >    return await this.knex('restaurant_owner')</span>
-      .update({ active: false, modified_at: new Date() })
+  async deleteRestaurantOwner(id: string) {
+    return await this.knex('restaurant_owner')
+      .update({ active: false })
       .where('restaurant_owner_id', id)
       .returning('*');
   }
@@ -217,7 +214,7 @@ export class RestaurantOwnerService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-19T12:25:22.912Z
+                at 2023-11-20T09:08:02.044Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

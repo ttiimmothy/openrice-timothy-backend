@@ -16,7 +16,7 @@ exports.RestaurantDishController = void 0;
 const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
 const restaurantDish_service_1 = require("./restaurantDish.service");
-const create_restaurantDish_dto_1 = require("./dto/create-restaurantDish.dto");
+const create_restaurant_dish_dto_1 = require("./dto/create_restaurant_dish.dto");
 const swagger_1 = require("@nestjs/swagger");
 let RestaurantDishController = class RestaurantDishController {
     constructor(restaurantDishService) {
@@ -37,10 +37,7 @@ let RestaurantDishController = class RestaurantDishController {
             return (await this.restaurantDishService.deleteRestaurantDish(params.restaurant_dish_id))[0];
         }
         else {
-            throw new common_1.NotFoundException('Bad request', {
-                cause: new Error(),
-                description: 'This restaurant dish cannot be found',
-            });
+            return { message: 'This restaurant dish cannot be found' };
         }
     }
 };
@@ -66,13 +63,13 @@ __decorate([
     openapi.ApiResponse({ status: 201, type: require("./dto/entity/restaurantDish.entity").RestaurantDishEntity }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_restaurantDish_dto_1.CreateRestaurantDishDto]),
+    __metadata("design:paramtypes", [create_restaurant_dish_dto_1.CreateRestaurantDishDto]),
     __metadata("design:returntype", Promise)
 ], RestaurantDishController.prototype, "createRestaurantDish", null);
 __decorate([
     (0, common_1.Delete)(':restaurant_dish_id'),
     (0, swagger_1.ApiParam)({ name: 'restaurant_dish_id', required: true, type: String }),
-    openapi.ApiResponse({ status: 200, type: require("./dto/entity/restaurantDish.entity").RestaurantDishEntity }),
+    openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),

@@ -16,7 +16,7 @@ exports.PhotoController = void 0;
 const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
 const photo_service_1 = require("./photo.service");
-const create_photo_dto_1 = require("./dto/create-photo.dto");
+const create_photo_dto_1 = require("./dto/create_photo.dto");
 const swagger_1 = require("@nestjs/swagger");
 let PhotoController = class PhotoController {
     constructor(photoService) {
@@ -37,10 +37,7 @@ let PhotoController = class PhotoController {
             return (await this.photoService.deletePhoto(params.photo_id))[0];
         }
         else {
-            throw new common_1.NotFoundException('Bad request', {
-                cause: new Error(),
-                description: 'This photo cannot be found',
-            });
+            return { message: 'This photo cannot be found' };
         }
     }
 };
@@ -72,7 +69,7 @@ __decorate([
 __decorate([
     (0, common_1.Delete)(':photo_id'),
     (0, swagger_1.ApiParam)({ name: 'photo_id', required: true, type: String }),
-    openapi.ApiResponse({ status: 200, type: require("./dto/entity/photo.entity").PhotoEntity }),
+    openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),

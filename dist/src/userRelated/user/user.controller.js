@@ -16,7 +16,7 @@ exports.UserController = void 0;
 const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
 const user_service_1 = require("./user.service");
-const update_user_dto_1 = require("./dto/update-user.dto");
+const update_user_dto_1 = require("./dto/update_user.dto");
 const swagger_1 = require("@nestjs/swagger");
 let UserController = class UserController {
     constructor(userService) {
@@ -34,10 +34,7 @@ let UserController = class UserController {
             return (await this.userService.updateUser(params.user_id, updateUserDto))[0];
         }
         else {
-            throw new common_1.NotFoundException('Bad request', {
-                cause: new Error(),
-                description: 'This user cannot be found',
-            });
+            return { message: 'This user cannot be found' };
         }
     }
     async deleteUser(params) {
@@ -46,10 +43,7 @@ let UserController = class UserController {
             return (await this.userService.deleteUser(params.user_id))[0];
         }
         else {
-            throw new common_1.NotFoundException('Bad request', {
-                cause: new Error(),
-                description: 'This user cannot be found',
-            });
+            return { message: 'This user cannot be found' };
         }
     }
 };
@@ -73,7 +67,7 @@ __decorate([
 __decorate([
     (0, common_1.Put)(':user_id'),
     (0, swagger_1.ApiParam)({ name: 'user_id', required: true, type: String }),
-    openapi.ApiResponse({ status: 200, type: require("./dto/entity/user.entity").UserEntity }),
+    openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -83,7 +77,7 @@ __decorate([
 __decorate([
     (0, common_1.Delete)(':user_id'),
     (0, swagger_1.ApiParam)({ name: 'user_id', required: true, type: String }),
-    openapi.ApiResponse({ status: 200, type: require("./dto/entity/user.entity").UserEntity }),
+    openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),

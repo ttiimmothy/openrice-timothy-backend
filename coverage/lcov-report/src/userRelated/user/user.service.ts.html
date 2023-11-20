@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.45% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/9</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -107,30 +107,25 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -138,14 +133,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -158,21 +158,21 @@ import { UpdateUserDto } from './dto/update_user.dto';
 &nbsp;
 @Injectable()
 export class UserService {
-<span class="fstat-no" title="function not covered" >  constructor(@I</span>nject('KnexConnection') private readonly <span class="cstat-no" title="statement not covered" >knex: Knex)</span> {}
+  constructor(@Inject('KnexConnection') private readonly knex: Knex) {}
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>getUsers() {
-<span class="cstat-no" title="statement not covered" >    return await this.knex.select('*').from('user');</span>
+  async getUsers() {
+    return await this.knex.select('*').from('user');
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>getUserByID(id: string) {
-<span class="cstat-no" title="statement not covered" >    return await this.knex.select('*').from('user').where('user_id', id);</span>
+  async getUserByID(id: string) {
+    return await this.knex.select('*').from('user').where('user_id', id);
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>createUser(user: CreateUserDto) {
-<span class="cstat-no" title="statement not covered" >    return await this.knex</span>
+  async createUser(user: CreateUserDto) {
+    return await this.knex
       .insert({
         ...user,
-        role: user.role ? user.role : 'User',
+        role: user.role ? user.role : <span class="branch-1 cbranch-no" title="branch not covered" >'User',</span>
         active: true,
         created_at: new Date(),
         modified_at: new Date(),
@@ -181,15 +181,15 @@ export class UserService {
       .returning('*');
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>updateUser(id: string, user: UpdateUserDto) {
-<span class="cstat-no" title="statement not covered" >    return await this.knex('user')</span>
+  async updateUser(id: string, user: UpdateUserDto) {
+    return await this.knex('user')
       .update({ ...user, modified_at: new Date() })
       .where('user_id', id)
       .returning('*');
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>deleteUser(id: string) {
-<span class="cstat-no" title="statement not covered" >    return await this.knex('user')</span>
+  async deleteUser(id: string) {
+    return await this.knex('user')
       .update({ active: false, modified_at: new Date() })
       .where('user_id', id)
       .returning('*');
@@ -202,7 +202,7 @@ export class UserService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-19T12:25:22.912Z
+                at 2023-11-20T09:08:02.044Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

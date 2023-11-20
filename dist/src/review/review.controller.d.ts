@@ -1,5 +1,5 @@
-import { UpdateReviewDto } from './dto/update-review.dto';
-import { CreateReviewDto } from './dto/create-review.dto';
+import { UpdateReviewDto } from './dto/update_review.dto';
+import { CreateReviewDto } from './dto/create_review.dto';
 import { ReviewService } from './review.service';
 import { ReviewEntity } from './dto/entity/review.entity';
 export declare class ReviewController {
@@ -12,8 +12,12 @@ export declare class ReviewController {
     createReview(createReviewDto: CreateReviewDto): Promise<any>;
     updateReview(params: {
         review_id: string;
-    }, updateReviewDto: UpdateReviewDto): Promise<ReviewEntity>;
+    }, updateReviewDto: UpdateReviewDto): Promise<ReviewEntity | {
+        message: string;
+    }>;
     deleteReview(params: {
         review_id: string;
-    }): Promise<ReviewEntity>;
+    }): Promise<ReviewEntity | {
+        message: string;
+    }>;
 }

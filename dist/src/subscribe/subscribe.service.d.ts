@@ -1,5 +1,5 @@
 import { Knex } from 'knex';
-import { CreateSubscribeDto } from './dto/create-subscribe.dto';
+import { CreateSubscribeDto } from './dto/create_subscribe.dto';
 export declare class SubscribeService {
     private readonly knex;
     constructor(knex: Knex);

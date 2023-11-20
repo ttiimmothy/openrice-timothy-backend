@@ -1,5 +1,5 @@
 import { PhotoService } from './photo.service';
-import { CreatePhotoDto } from './dto/create-photo.dto';
+import { CreatePhotoDto } from './dto/create_photo.dto';
 import { PhotoEntity } from './dto/entity/photo.entity';
 export declare class PhotoController {
     private readonly photoService;
@@ -11,5 +11,7 @@ export declare class PhotoController {
     createPhoto(createPhotoDto: CreatePhotoDto): Promise<PhotoEntity>;
     deletePhoto(params: {
         photo_id: string;
-    }): Promise<PhotoEntity>;
+    }): Promise<PhotoEntity | {
+        message: string;
+    }>;
 }

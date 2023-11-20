@@ -30,7 +30,6 @@ let PhotoService = class PhotoService {
             .insert({
             ...photo,
             created_at: new Date(),
-            modified_at: new Date(),
             active: true,
         })
             .into('photo')
@@ -38,7 +37,7 @@ let PhotoService = class PhotoService {
     }
     async deletePhoto(id) {
         return await this.knex('photo')
-            .update({ active: false, modified_at: new Date() })
+            .update({ active: false })
             .where('photo_id', id)
             .returning('*');
     }

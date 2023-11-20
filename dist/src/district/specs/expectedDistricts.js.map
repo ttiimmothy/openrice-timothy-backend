@@ -1,0 +1,1 @@
+{"version":3,"file":"expectedDistricts.js","sourceRoot":"","sources":["../../../../src/district/specs/expectedDistricts.ts"],"names":[],"mappings":";;;AAAa,QAAA,iBAAiB,GAAG;IAC/B;QACE,WAAW,EAAE,KAAK;QAClB,IAAI,EAAE,UAAU;QAChB,MAAM,EAAE,IAAI;QACZ,UAAU,EAAE,IAAI,IAAI,CAAC,YAAY,CAAC;KACnC;CACF,CAAC"}
