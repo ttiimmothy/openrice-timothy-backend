@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/10</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -100,27 +100,27 @@
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -131,7 +131,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,21 +143,21 @@ import { CreateRestaurantPaymentDto } from './dto/create_restaurant_payment.dto'
 &nbsp;
 @Injectable()
 export class RestaurantPaymentService {
-<span class="fstat-no" title="function not covered" >  constructor(@I</span>nject('KnexConnection') private readonly <span class="cstat-no" title="statement not covered" >knex: Knex)</span> {}
+  constructor(@Inject('KnexConnection') private readonly knex: Knex) {}
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>getRestaurantPayments() {
-<span class="cstat-no" title="statement not covered" >    return await this.knex.select('*').from('restaurant_payment');</span>
+  async getRestaurantPayments() {
+    return await this.knex.select('*').from('restaurant_payment');
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>getRestaurantPaymentByID(id: string) {
-<span class="cstat-no" title="statement not covered" >    return await this.knex</span>
+  async getRestaurantPaymentByID(id: string) {
+    return await this.knex
       .select('*')
       .from('restaurant_payment')
       .where('restaurant_payment_id', id);
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>createRestaurantPayment(restaurantPayment: CreateRestaurantPaymentDto) {
-<span class="cstat-no" title="statement not covered" >    return await this.knex</span>
+  async createRestaurantPayment(restaurantPayment: CreateRestaurantPaymentDto) {
+    return await this.knex
       .insert({
         ...restaurantPayment,
         created_at: new Date(),
@@ -167,9 +167,9 @@ export class RestaurantPaymentService {
       .returning('*');
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>deleteRestaurantPayment(id: string) {
-<span class="cstat-no" title="statement not covered" >    return await this.knex('restaurant_payment')</span>
-      .update({ active: false, modified_at: new Date() })
+  async deleteRestaurantPayment(id: string) {
+    return await this.knex('restaurant_payment')
+      .update({ active: false })
       .where('restaurant_payment_id', id)
       .returning('*');
   }
@@ -181,7 +181,7 @@ export class RestaurantPaymentService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-19T12:25:22.912Z
+                at 2023-11-20T09:08:02.044Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

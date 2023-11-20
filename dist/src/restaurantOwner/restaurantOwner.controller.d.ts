@@ -1,5 +1,5 @@
-import { CreateRestaurantOwnerDto } from './dto/create-restaurantOwner.dto';
-import { UpdateRestaurantOwnerDto } from './dto/update-restaurantOwner.dto';
+import { CreateRestaurantOwnerDto } from './dto/create_restaurant_owner.dto';
+import { UpdateRestaurantOwnerDto } from './dto/update_restaurant_owner.dto';
 import { RestaurantOwnerService } from './restaurantOwner.service';
 import { RestaurantOwnerEntity } from './dto/entity/restaurantOwner.enttiy';
 export declare class RestaurantOwnerController {
@@ -12,8 +12,12 @@ export declare class RestaurantOwnerController {
     createRestaurantOwner(createRestaurantOwnerDto: CreateRestaurantOwnerDto): Promise<RestaurantOwnerEntity>;
     updateRestaurantOwner(params: {
         restaurant_owner_id: string;
-    }, updateRestaurantOwnerDto: UpdateRestaurantOwnerDto): Promise<RestaurantOwnerEntity>;
+    }, updateRestaurantOwnerDto: UpdateRestaurantOwnerDto): Promise<RestaurantOwnerEntity | {
+        message: string;
+    }>;
     deleteRestaurantOwner(params: {
         restaurant_owner_id: string;
-    }): Promise<RestaurantOwnerEntity>;
+    }): Promise<RestaurantOwnerEntity | {
+        message: string;
+    }>;
 }

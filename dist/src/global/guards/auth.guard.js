@@ -19,10 +19,8 @@ let AuthGuard = class AuthGuard {
     canActivate(context) {
         const request = context.switchToHttp().getRequest();
         if (request.headers.authorization?.split(' ')[0] !== 'Bearer') {
-            throw new common_1.ForbiddenException('Forbidden request', {
-                cause: new Error(),
-                description: 'invalid token',
-            });
+            console.log({ message: 'invalid token' });
+            return false;
         }
         const token = request.headers.authorization?.split(' ')[1];
         if (token) {

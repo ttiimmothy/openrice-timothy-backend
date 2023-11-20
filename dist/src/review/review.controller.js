@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReviewController = void 0;
 const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
-const update_review_dto_1 = require("./dto/update-review.dto");
-const create_review_dto_1 = require("./dto/create-review.dto");
+const update_review_dto_1 = require("./dto/update_review.dto");
+const create_review_dto_1 = require("./dto/create_review.dto");
 const review_service_1 = require("./review.service");
 const swagger_1 = require("@nestjs/swagger");
 let ReviewController = class ReviewController {
@@ -50,10 +50,7 @@ let ReviewController = class ReviewController {
             return (await this.reviewService.updateReview(params.review_id, updateReviewDto))[0];
         }
         else {
-            throw new common_1.NotFoundException('Bad request', {
-                cause: new Error(),
-                description: 'This review cannot be found',
-            });
+            return { message: 'This review cannot be found' };
         }
     }
     async deleteReview(params) {
@@ -62,10 +59,7 @@ let ReviewController = class ReviewController {
             return (await this.reviewService.deleteReview(params.review_id))[0];
         }
         else {
-            throw new common_1.NotFoundException('Bad request', {
-                cause: new Error(),
-                description: 'This review cannot be found',
-            });
+            return { message: 'This review cannot be found' };
         }
     }
 };
@@ -97,7 +91,7 @@ __decorate([
 __decorate([
     (0, common_1.Put)(':review_id'),
     (0, swagger_1.ApiParam)({ name: 'review_id', required: true, type: String }),
-    openapi.ApiResponse({ status: 200, type: require("./dto/entity/review.entity").ReviewEntity }),
+    openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -107,7 +101,7 @@ __decorate([
 __decorate([
     (0, common_1.Delete)(':review_id'),
     (0, swagger_1.ApiParam)({ name: 'review_id', required: true, type: String }),
-    openapi.ApiResponse({ status: 200, type: require("./dto/entity/review.entity").ReviewEntity }),
+    openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),

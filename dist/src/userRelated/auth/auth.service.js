@@ -28,7 +28,7 @@ let AuthService = class AuthService {
             return jwtSimple.decode(token, process.env.JWT_SECRET);
         }
         catch (e) {
-            console.error(e);
+            console.log(e);
             return null;
         }
     }

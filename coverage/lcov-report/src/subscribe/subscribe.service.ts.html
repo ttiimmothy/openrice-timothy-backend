@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/10</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -100,28 +100,27 @@
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -132,8 +131,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -145,34 +143,33 @@ import { CreateSubscribeDto } from './dto/create_subscribe.dto';
 &nbsp;
 @Injectable()
 export class SubscribeService {
-<span class="fstat-no" title="function not covered" >  constructor(@I</span>nject('KnexConnection') private readonly <span class="cstat-no" title="statement not covered" >knex: Knex)</span> {}
+  constructor(@Inject('KnexConnection') private readonly knex: Knex) {}
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>getSubscribes() {
-<span class="cstat-no" title="statement not covered" >    return await this.knex.select('*').from('subscribe');</span>
+  async getSubscribes() {
+    return await this.knex.select('*').from('subscribe');
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>getSubscribeByID(id: string) {
-<span class="cstat-no" title="statement not covered" >    return await this.knex</span>
+  async getSubscribeByID(id: string) {
+    return await this.knex
       .select('*')
       .from('subscribe')
       .where('subscribe_id', id);
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>createSubscribe(subscribe: CreateSubscribeDto) {
-<span class="cstat-no" title="statement not covered" >    return await this.knex</span>
+  async createSubscribe(subscribe: CreateSubscribeDto) {
+    return await this.knex
       .insert({
         ...subscribe,
-        created_at: new Date(),
-        modified_at: new Date(),
         active: true,
+        created_at: new Date(),
       })
       .into('subscribe')
       .returning('*');
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async </span>deleteSubscribe(id: string) {
-<span class="cstat-no" title="statement not covered" >    return await this.knex('subscribe')</span>
-      .update({ active: false, modified_at: new Date() })
+  async deleteSubscribe(id: string) {
+    return await this.knex('subscribe')
+      .update({ active: false })
       .where('subscribe_id', id)
       .returning('*');
   }
@@ -184,7 +181,7 @@ export class SubscribeService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-19T12:25:22.912Z
+                at 2023-11-20T09:08:02.044Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

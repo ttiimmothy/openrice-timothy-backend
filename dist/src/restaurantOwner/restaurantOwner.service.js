@@ -33,7 +33,6 @@ let RestaurantOwnerService = class RestaurantOwnerService {
             .insert({
             ...restaurantOwner,
             created_at: new Date(),
-            modified_at: new Date(),
             active: true,
         })
             .into('restaurant_owner')
@@ -41,13 +40,13 @@ let RestaurantOwnerService = class RestaurantOwnerService {
     }
     async updateRestaurantOwner(id, restaurantOwner) {
         return await this.knex('restaurant_owner')
-            .update({ ...restaurantOwner, modified_at: new Date() })
+            .update(restaurantOwner)
             .where('restaurant_owner_id', id)
             .returning('*');
     }
     async deleteRestaurantOwner(id) {
         return await this.knex('restaurant_owner')
-            .update({ active: false, modified_at: new Date() })
+            .update({ active: false })
             .where('restaurant_owner_id', id)
             .returning('*');
     }

@@ -1,5 +1,5 @@
 import { RestaurantDishService } from './restaurantDish.service';
-import { CreateRestaurantDishDto } from './dto/create-restaurantDish.dto';
+import { CreateRestaurantDishDto } from './dto/create_restaurant_dish.dto';
 import { RestaurantDishEntity } from './dto/entity/restaurantDish.entity';
 export declare class RestaurantDishController {
     private readonly restaurantDishService;
@@ -11,5 +11,7 @@ export declare class RestaurantDishController {
     createRestaurantDish(createRestaurantDishDto: CreateRestaurantDishDto): Promise<RestaurantDishEntity>;
     deleteRestaurantDish(params: {
         restaurant_dish_id: string;
-    }): Promise<RestaurantDishEntity>;
+    }): Promise<RestaurantDishEntity | {
+        message: string;
+    }>;
 }
