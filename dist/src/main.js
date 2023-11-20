@@ -6,7 +6,7 @@ const swagger_1 = require("@nestjs/swagger");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const helmet_1 = require("helmet");
-dotenv.config();
+dotenv.config({ path: __dirname + '/../../src/secrets/.env' });
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.use(cors({
