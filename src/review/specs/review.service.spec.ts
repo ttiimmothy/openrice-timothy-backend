@@ -4,6 +4,8 @@ import { ReviewService } from '../review.service';
 import { expectedUsers } from '../../userRelated/user/specs/expectedUsers';
 import { expectedRestaurants } from '../../restaurant/specs/expectedRestaurants';
 import { expectedDistricts } from '../../district/specs/expectedDistricts';
+import { expectedPhotoCategories } from '../../photoCategory/specs/expectedPhotoCategories';
+import { expectedReviewPhotos } from '../../photo/specs/expectedReviewPhotos';
 import { expectedReviews } from './expectedReviews';
 
 const configMode = process.env.TESTING_NODE_ENV || 'testing';
@@ -16,6 +18,8 @@ describe('ReviewService', () => {
   let userIDs: { user_id: string }[];
   let districtIDs: { district_id: string }[];
   let restaurantIDs: { restaurant_id: string }[];
+  let photoCategoryIDs: { photo_category_id: string }[];
+  let reviewPhotoIDs: { review_photo_id: string }[];
 
   beforeAll(async () => {
     reviewService = new ReviewService(knex);
@@ -107,15 +111,25 @@ describe('ReviewService', () => {
 
   describe('createReview', () => {
     it('should return that review after creating a review', async () => {
-      const result = await reviewService.createReview({
-        user_id: userIDs[0].user_id,
-        restaurant_id: restaurantIDs[0].restaurant_id,
-        title: expectedReviews[0].title,
-        content: expectedReviews[0].content,
-        rating: expectedReviews[0].rating,
-        spending: expectedReviews[0].spending,
-        visited_date: expectedReviews[0].visited_date,
-      });
+      photoCategoryIDs = await knex
+        .insert({ name: 'Review' })
+        .into('photo_category')
+        .returning('photo_category_id');
+
+      const result = await reviewService.createReview(
+        {
+          user_id: userIDs[0].user_id,
+          restaurant_id: restaurantIDs[0].restaurant_id,
+          title: expectedReviews[0].title,
+          content: expectedReviews[0].content,
+          rating: expectedReviews[0].rating,
+          spending: expectedReviews[0].spending,
+          visited_date: expectedReviews[0].visited_date,
+        },
+        restaurantIDs[0].restaurant_id,
+        photoCategoryIDs[0].photo_category_id,
+        'png',
+      );
 
       reviewIDs.push({ review_id: result[0].review_id });
 
@@ -199,23 +213,129 @@ describe('ReviewService', () => {
     });
   });
 
+  describe('getReviewPhoto', () => {
+    it('should get the photo of a specific review id', async () => {
+      photoCategoryIDs = await knex
+        .insert({
+          name: expectedPhotoCategories[0].name,
+        })
+        .into('photo_category')
+        .returning('photo_category_id');
+
+      reviewPhotoIDs = await knex
+        .insert({
+          photo_category_id: photoCategoryIDs[0].photo_category_id,
+          review_id: reviewIDs[0].review_id,
+          photo_url: expectedReviewPhotos[0].photo_url,
+        })
+        .into('review_photo')
+        .returning('review_photo_id');
+
+      const result = await reviewService.getReviewPhoto(reviewIDs[0].review_id);
+      expect(result).toEqual([
+        {
+          photo_url: expectedReviewPhotos[0].photo_url,
+        },
+      ]);
+    });
+  });
+
+  describe('getPhotoCategoryID', () => {
+    it('should get the photo category id of a specific photo category name', async () => {
+      photoCategoryIDs = await knex
+        .insert({ name: 'Review' })
+        .into('photo_category')
+        .returning('photo_category_id');
+
+      const result = await reviewService.getPhotoCategoryID('Review');
+      const photoCategoryIDFiltered = result.filter(
+        (photoCategoryID) =>
+          photoCategoryID.photo_category_id ===
+          photoCategoryIDs[0].photo_category_id,
+      );
+      expect(photoCategoryIDFiltered).toMatchObject([
+        {
+          photo_category_id: photoCategoryIDs[0].photo_category_id,
+        },
+      ]);
+    });
+  });
+
   afterEach(async () => {
-    const photos = await knex
+    let reviewPhotos;
+    if (reviewPhotoIDs && reviewPhotoIDs.length > 0) {
+      await knex('review_photo')
+        .whereIn(
+          'review_photo_id',
+          reviewPhotoIDs.map((reviewPhotoID) => reviewPhotoID.review_photo_id),
+        )
+        .del();
+    }
+
+    if (photoCategoryIDs && photoCategoryIDs.length > 0) {
+      reviewPhotos = await knex
+        .select('*')
+        .from('review_photo')
+        .whereIn(
+          'photo_category_id',
+          photoCategoryIDs.map(
+            (photoCategoryID) => photoCategoryID.photo_category_id,
+          ),
+        );
+    }
+
+    if (
+      reviewPhotos &&
+      reviewPhotos.length === 0 &&
+      photoCategoryIDs &&
+      photoCategoryIDs.length > 0
+    ) {
+      await knex('photo_category')
+        .whereIn(
+          'photo_category_id',
+          photoCategoryIDs.map(
+            (photoCategoryID) => photoCategoryID.photo_category_id,
+          ),
+        )
+        .del();
+    }
+
+    reviewPhotos = await knex
       .select('*')
-      .from('photo')
+      .from('review_photo')
       .whereIn(
         'review_id',
         reviewIDs.map((reviewID) => reviewID.review_id),
       );
 
-    if (photos.length === 0) {
+    if (reviewPhotos && reviewPhotos.length === 0) {
       await knex('review')
         .whereIn(
           'review_id',
           reviewIDs.map((reviewID) => reviewID.review_id),
         )
         .del();
+    }
 
+    const reviews = await knex
+      .select('*')
+      .from('review')
+      .whereIn(
+        'restaurant_id',
+        restaurantIDs.map((restaurantID) => restaurantID.restaurant_id),
+      );
+
+    reviews.concat(
+      await knex
+        .select('*')
+        .from('review')
+        .whereIn(
+          'user_id',
+          userIDs.map((userID) => userID.user_id),
+        ),
+    );
+
+    if (reviews.length === 0) {
       await knex('restaurant')
         .whereIn(
           'restaurant_id',

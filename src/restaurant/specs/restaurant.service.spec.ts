@@ -16,6 +16,7 @@ describe('RestaurantService', () => {
   let userIDs: { user_id: string }[];
   let districtIDs: { district_id: string }[];
   let reviewIDs: { review_id: string }[];
+  let restaurantID: { restaurant_id: string }[];
 
   beforeAll(async () => {
     restaurantService = new RestaurantService(knex);
@@ -57,7 +58,7 @@ describe('RestaurantService', () => {
 
   describe('getRestaurants', () => {
     it('should return restaurants', async () => {
-      const result = await restaurantService.getRestaurants(10, 0);
+      const result = await restaurantService.getRestaurants(100, 0);
       const restaurantFiltered = result.filter(
         (restaurant) =>
           restaurant.restaurant_id === restaurantIDs[0].restaurant_id,
@@ -101,17 +102,54 @@ describe('RestaurantService', () => {
   });
 
   describe('createRestaurant', () => {
+    it('should return that restaurant after creating a restaurant with cover image url', async () => {
+      const result = await restaurantService.createRestaurant({
+        restaurant: {
+          name: expectedRestaurants[0].name,
+          address: expectedRestaurants[0].address,
+          district_id: districtIDs[0].district_id,
+          latitude: expectedRestaurants[0].latitude,
+          longitude: expectedRestaurants[0].longitude,
+          postal_code: expectedRestaurants[0].postal_code,
+          phone: expectedRestaurants[0].phone,
+          intro: expectedRestaurants[0].intro,
+          opening_hours: expectedRestaurants[0].opening_hours,
+        },
+        fileExtension: 'png',
+      });
+
+      restaurantIDs.push({ restaurant_id: result[0].restaurant_id });
+
+      expect(result).toMatchObject([
+        {
+          name: expectedRestaurants[0].name,
+          address: expectedRestaurants[0].address,
+          district_id: districtIDs[0].district_id,
+          latitude: expectedRestaurants[0].latitude.toString() + '.00',
+          longitude: expectedRestaurants[0].longitude.toString() + '.00',
+          postal_code: expectedRestaurants[0].postal_code,
+          phone: expectedRestaurants[0].phone,
+          intro: expectedRestaurants[0].intro,
+          opening_hours: expectedRestaurants[0].opening_hours,
+          cover_image_url: `${process.env.IMAGE_PREFIX}/${result[0].restaurant_id}/cover_image_url.png`,
+        },
+      ]);
+    });
+
     it('should return that restaurant after creating a restaurant', async () => {
       const result = await restaurantService.createRestaurant({
-        name: expectedRestaurants[0].name,
-        address: expectedRestaurants[0].address,
-        district_id: districtIDs[0].district_id,
-        latitude: expectedRestaurants[0].latitude,
-        longitude: expectedRestaurants[0].longitude,
-        postal_code: expectedRestaurants[0].postal_code,
-        phone: expectedRestaurants[0].phone,
-        intro: expectedRestaurants[0].intro,
-        opening_hours: expectedRestaurants[0].opening_hours,
+        restaurant: {
+          name: expectedRestaurants[0].name,
+          address: expectedRestaurants[0].address,
+          district_id: districtIDs[0].district_id,
+          latitude: expectedRestaurants[0].latitude,
+          longitude: expectedRestaurants[0].longitude,
+          postal_code: expectedRestaurants[0].postal_code,
+          phone: expectedRestaurants[0].phone,
+          intro: expectedRestaurants[0].intro,
+          opening_hours: expectedRestaurants[0].opening_hours,
+        },
+        fileExtension: '',
       });
 
       restaurantIDs.push({ restaurant_id: result[0].restaurant_id });
@@ -242,6 +280,14 @@ describe('RestaurantService', () => {
         .del();
     }
 
+    const menuPhotos = await knex
+      .select('*')
+      .from('menu_photo')
+      .whereIn(
+        'restaurant_id',
+        restaurantIDs.map((restaurantID) => restaurantID.restaurant_id),
+      );
+
     const restaurantDishes = await knex
       .select('*')
       .from('restaurant_dish')
@@ -258,9 +304,9 @@ describe('RestaurantService', () => {
         restaurantIDs.map((restaurantID) => restaurantID.restaurant_id),
       );
 
-    const restaurantPayments = await knex
+    const restaurantPaymentMethods = await knex
       .select('*')
-      .from('restaurant_payment')
+      .from('restaurant_payment_method')
       .whereIn(
         'restaurant_id',
         restaurantIDs.map((restaurantID) => restaurantID.restaurant_id),
@@ -283,9 +329,10 @@ describe('RestaurantService', () => {
       );
 
     if (
+      menuPhotos.length === 0 &&
       restaurantDishes.length === 0 &&
       restaurantOwners.length === 0 &&
-      restaurantPayments.length === 0 &&
+      restaurantPaymentMethods.length === 0 &&
       reviews.length === 0 &&
       subscribes.length === 0
     ) {
@@ -295,7 +342,26 @@ describe('RestaurantService', () => {
           restaurantIDs.map((restaurantID) => restaurantID.restaurant_id),
         )
         .del();
+    }
 
+    if (restaurantID && restaurantID.length === 0) {
+      await knex('restaurant')
+        .whereIn(
+          'restaurant_id',
+          restaurantID.map((id) => id.restaurant_id),
+        )
+        .del();
+    }
+
+    const restaurants = await knex
+      .select('*')
+      .from('restaurant')
+      .whereIn(
+        'district_id',
+        districtIDs.map((districtID) => districtID.district_id),
+      );
+
+    if (restaurants.length === 0) {
       await knex('district')
         .whereIn(
           'district_id',

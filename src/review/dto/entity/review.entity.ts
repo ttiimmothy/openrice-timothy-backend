@@ -1,4 +1,4 @@
-import { Review } from 'src/review/interfaces/review.interface';
+import { Review } from '../../interfaces/review.interface';
 
 export class ReviewEntity implements Review {
   review_id: string;
@@ -11,6 +11,7 @@ export class ReviewEntity implements Review {
   rating: number;
   spending: number;
   visited_date: Date;
+  photo?: string;
   active: boolean;
   created_at: Date;
   modified_at: Date;

@@ -28,26 +28,26 @@ export class RestaurantController {
   @ApiQuery({ name: 'name', required: false })
   @ApiQuery({ name: 'role', enum: UserRole, required: false })
   async getRestaurants(
-    @Query('limit', new DefaultValuePipe('10'), ParseIntPipe)
+    @Query('limit', new DefaultValuePipe('100'), ParseIntPipe)
     limit: number,
     @Query('offset', new DefaultValuePipe('0'), ParseIntPipe)
     offset: number,
     @Query('name', new DefaultValuePipe(''))
     name: string,
   ): Promise<RestaurantEntity[]> {
-    let filterRestaurants;
+    let restaurantsFiltered;
     const restaurants = await this.restaurantService.getRestaurants(
       limit,
       offset,
     );
 
     if (name) {
-      filterRestaurants = restaurants.filter((restaurant) =>
+      restaurantsFiltered = restaurants.filter((restaurant) =>
         restaurant.name.toLowerCase().includes(name.toLowerCase()),
       );
 
       return Promise.all(
-        filterRestaurants.map(async (restaurant) => ({
+        restaurantsFiltered.map(async (restaurant) => ({
           ...restaurant,
           averageRating: await this.restaurantService.getAverageRating(
             restaurant.restaurant_id,
@@ -72,7 +72,7 @@ export class RestaurantController {
     );
   }
 
-  @Get(':restaurant_id')
+  @Get('id/:restaurant_id')
   @ApiParam({ name: 'restaurant_id', required: true, type: String })
   async getRestaurantByID(
     @Param() params: { restaurant_id: string },
@@ -100,7 +100,7 @@ export class RestaurantController {
     )[0];
   }
 
-  @Put(':restaurant_id')
+  @Put('id/:restaurant_id')
   @ApiParam({ name: 'restaurant_id', required: true, type: String })
   async updateRestaurant(
     @Param() params: { restaurant_id: string },
@@ -121,7 +121,7 @@ export class RestaurantController {
     }
   }
 
-  @Delete(':restaurant_id')
+  @Delete('id/:restaurant_id')
   @ApiParam({ name: 'restaurant_id', required: true, type: String })
   async deleteRestaurant(
     @Param() params: { restaurant_id: string },

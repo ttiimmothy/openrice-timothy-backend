@@ -1,21 +1,31 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreatePhotoDto {
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'The foreign key (UUID) from photo category table',
     type: String,
   })
-  photo_category_id: string;
+  photo_category_id?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'The foreign key (UUID) from review table',
     type: String,
   })
-  review_id: string;
+  review_id?: string;
 
-  @ApiProperty({
-    description: 'The storage address of photo',
+  @ApiPropertyOptional({
+    description: 'The url of photo',
     type: String,
   })
-  address: string;
+  photo_url?: string;
+
+  @ApiPropertyOptional({
+    type: String,
+  })
+  restaurantID?: string;
+
+  @ApiPropertyOptional({
+    type: String,
+  })
+  imageName?: string;
 }

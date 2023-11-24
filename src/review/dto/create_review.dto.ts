@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreateReviewDto {
   @ApiProperty({
@@ -44,4 +44,15 @@ export class CreateReviewDto {
     type: Date,
   })
   visited_date: Date;
+}
+
+export class CreateReviewDtoExtended {
+  @ApiProperty({ type: CreateReviewDto })
+  createReviewDto: CreateReviewDto;
+
+  @ApiProperty({ type: String })
+  restaurantID: string;
+
+  @ApiPropertyOptional({ type: String })
+  fileExtension?: string;
 }

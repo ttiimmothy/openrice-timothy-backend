@@ -8,7 +8,7 @@ import { DishModule } from './dish/dish.module';
 import { RestaurantDishModule } from './restaurantDish/restaurantDish.module';
 import { PhotoModule } from './photo/photo.module';
 import { RestaurantOwnerModule } from './restaurantOwner/restaurantOwner.module';
-import { RestaurantPaymentModule } from './restaurantPayment/restaurantPayment.module';
+import { RestaurantPaymentMethodModule } from './restaurantPaymentMethod/restaurantPaymentMethod.module';
 import { ReviewModule } from './review/review.module';
 import { SubscribeModule } from './subscribe/subscribe.module';
 import { DistrictModule } from './district/district.module';
@@ -34,7 +34,7 @@ import { StaticModule } from './global/static/static.module';
     PhotoCategoryModule,
     RestaurantDishModule,
     RestaurantOwnerModule,
-    RestaurantPaymentModule,
+    RestaurantPaymentMethodModule,
     ReviewModule,
     SubscribeModule,
     AuthModule,
