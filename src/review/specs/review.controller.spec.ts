@@ -1,6 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ReviewController } from '../review.controller';
 import { ReviewService } from '../review.service';
+import { expectedReviewPhotos } from '../../photo/specs/expectedReviewPhotos';
+import { expectedPhotoCategories } from '../../photoCategory/specs/expectedPhotoCategories';
+import { expectedRestaurants } from '../../restaurant/specs/expectedRestaurants';
+import { expectedUsers } from '../../userRelated/user/specs/expectedUsers';
 import { expectedReviews } from './expectedReviews';
 
 jest.mock('../review.service');
@@ -36,16 +40,45 @@ describe('ReviewController', () => {
       .mockResolvedValue(expectedReviews);
     jest
       .spyOn(reviewService, 'getReviewerName')
-      .mockResolvedValue([{ username: 'Timothy' }]);
+      .mockResolvedValue([{ username: expectedUsers[0].username }]);
     jest
       .spyOn(reviewService, 'getReviewRestaurantName')
-      .mockResolvedValue([{ name: 'restaurant' }]);
+      .mockResolvedValue([{ name: expectedRestaurants[0].name }]);
+    jest
+      .spyOn(reviewService, 'getReviewPhoto')
+      .mockResolvedValue([{ photo_url: expectedReviewPhotos[0].photo_url }]);
+    jest
+      .spyOn(reviewService, 'getPhotoCategoryID')
+      .mockResolvedValue([
+        { photo_category_id: expectedReviewPhotos[0].photo_category_id },
+      ]);
   });
 
   describe('getReviews', () => {
+    it('should return reviews with restaurant id starts with 123', async () => {
+      const result = await reviewController.getReviews(
+        expectedReviews[0].restaurant_id,
+      );
+      expect(result).toEqual([
+        {
+          ...expectedReviews[0],
+          username: expectedUsers[0].username,
+          restaurantName: expectedRestaurants[0].name,
+          photo: expectedReviewPhotos[0].photo_url,
+        },
+      ]);
+    });
+
     it('should return reviews', async () => {
-      const result = await reviewController.getReviews();
-      expect(result).toEqual(expectedReviews);
+      const result = await reviewController.getReviews('');
+      expect(result).toEqual([
+        {
+          ...expectedReviews[0],
+          username: expectedUsers[0].username,
+          restaurantName: expectedRestaurants[0].name,
+          photo: expectedReviewPhotos[0].photo_url,
+        },
+      ]);
     });
   });
 
@@ -54,21 +87,32 @@ describe('ReviewController', () => {
       const result = await reviewController.getReviewByID({
         review_id: expectedReviews[0].review_id,
       });
-      expect(result).toEqual(expectedReviews[0]);
+      expect(result).toEqual({
+        ...expectedReviews[0],
+        username: expectedUsers[0].username,
+        restaurantName: expectedRestaurants[0].name,
+        photo: expectedReviewPhotos[0].photo_url,
+      });
     });
   });
 
   describe('createReview', () => {
     it('should return that review after creating a review', async () => {
-      const result = await reviewController.createReview({
-        user_id: expectedReviews[0].review_id,
-        restaurant_id: expectedReviews[0].restaurant_id,
-        title: expectedReviews[0].title,
-        content: expectedReviews[0].content,
-        rating: expectedReviews[0].rating,
-        spending: expectedReviews[0].spending,
-        visited_date: expectedReviews[0].visited_date,
-      });
+      const result = await reviewController.createReview(
+        {
+          createReviewDto: {
+            user_id: expectedReviews[0].review_id,
+            restaurant_id: expectedReviews[0].restaurant_id,
+            title: expectedReviews[0].title,
+            content: expectedReviews[0].content,
+            rating: expectedReviews[0].rating,
+            spending: expectedReviews[0].spending,
+            visited_date: expectedReviews[0].visited_date,
+          },
+          restaurantID: expectedRestaurants[0].restaurant_id,
+        },
+        expectedPhotoCategories[0].name,
+      );
 
       expect(result).toEqual(expectedReviews[0]);
     });

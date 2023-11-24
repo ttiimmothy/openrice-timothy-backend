@@ -42,11 +42,11 @@ describe('RestaurantController', () => {
   });
 
   describe('getRestaurants', () => {
-    it('should return restaurants', async () => {
+    it('should return restaurants with name starts with restaurant', async () => {
       const result = await restaurantController.getRestaurants(
-        10,
+        100,
         0,
-        'restaurant',
+        expectedRestaurants[0].name,
       );
       expect(result).toEqual([
         { ...expectedRestaurants[0], averageRating: 1, reviewCount: 1 },
@@ -54,7 +54,7 @@ describe('RestaurantController', () => {
     });
 
     it('should return restaurants', async () => {
-      const result = await restaurantController.getRestaurants(10, 0, '');
+      const result = await restaurantController.getRestaurants(100, 0, '');
       expect(result).toEqual([
         { ...expectedRestaurants[0], averageRating: 1, reviewCount: 1 },
       ]);
@@ -77,16 +77,19 @@ describe('RestaurantController', () => {
   describe('createRestaurant', () => {
     it('should return that restaurant after creating a restaurant ', async () => {
       const result = await restaurantController.createRestaurant({
-        name: expectedRestaurants[0].name,
-        address: expectedRestaurants[0].address,
-        district_id: expectedRestaurants[0].district_id,
-        latitude: expectedRestaurants[0].latitude,
-        longitude: expectedRestaurants[0].longitude,
-        postal_code: expectedRestaurants[0].postal_code,
-        phone: expectedRestaurants[0].phone,
-        intro: expectedRestaurants[0].intro,
-        opening_hours: expectedRestaurants[0].opening_hours,
-        cover_image: expectedRestaurants[0].cover_image,
+        restaurant: {
+          name: expectedRestaurants[0].name,
+          address: expectedRestaurants[0].address,
+          district_id: expectedRestaurants[0].district_id,
+          latitude: expectedRestaurants[0].latitude,
+          longitude: expectedRestaurants[0].longitude,
+          postal_code: expectedRestaurants[0].postal_code,
+          phone: expectedRestaurants[0].phone,
+          intro: expectedRestaurants[0].intro,
+          opening_hours: expectedRestaurants[0].opening_hours,
+          cover_image_url: expectedRestaurants[0].cover_image_url,
+        },
+        fileExtension: 'png',
       });
 
       expect(result).toEqual(expectedRestaurants[0]);
@@ -109,7 +112,7 @@ describe('RestaurantController', () => {
           phone: expectedRestaurants[0].phone,
           intro: expectedRestaurants[0].intro,
           opening_hours: expectedRestaurants[0].opening_hours,
-          cover_image: expectedRestaurants[0].cover_image,
+          cover_image_url: expectedRestaurants[0].cover_image_url,
           active: false,
         },
       );
@@ -136,7 +139,7 @@ describe('RestaurantController', () => {
           phone: expectedRestaurants[0].phone,
           intro: expectedRestaurants[0].intro,
           opening_hours: expectedRestaurants[0].opening_hours,
-          cover_image: expectedRestaurants[0].cover_image,
+          cover_image_url: expectedRestaurants[0].cover_image_url,
           active: false,
         },
       );
