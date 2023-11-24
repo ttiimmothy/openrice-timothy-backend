@@ -15,7 +15,6 @@ import { DistrictModule } from './district/district.module';
 import { PhotoCategoryModule } from './photoCategory/photoCategory.module';
 import { AuthModule } from './userRelated/auth/auth.module';
 import { PaymentMethodModule } from './paymentMethod/paymentMethod.module';
-
 import { KnexModule } from './global/modules/knex.module';
 import { CspModule } from './global/csp/csp.module';
 import { StaticModule } from './global/static/static.module';
