@@ -15,21 +15,35 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReviewController = void 0;
 const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
+const swagger_1 = require("@nestjs/swagger");
 const update_review_dto_1 = require("./dto/update_review.dto");
 const create_review_dto_1 = require("./dto/create_review.dto");
 const review_service_1 = require("./review.service");
-const swagger_1 = require("@nestjs/swagger");
 let ReviewController = class ReviewController {
     constructor(reviewService) {
         this.reviewService = reviewService;
     }
-    async getReviews() {
+    async getReviews(restaurantID) {
+        let reviewsFiltered;
         const reviews = await this.reviewService.getReviews();
+        if (restaurantID) {
+            reviewsFiltered = reviews.filter((review) => review.restaurant_id === restaurantID);
+            return Promise.all(reviewsFiltered.map(async (review) => {
+                return {
+                    ...review,
+                    username: (await this.reviewService.getReviewerName(review.user_id))[0].username,
+                    restaurantName: (await this.reviewService.getReviewRestaurantName(review.restaurant_id))[0].name,
+                    photo: (await this.reviewService.getReviewPhoto(review.review_id))[0]?.photo_url,
+                };
+            }));
+        }
         return Promise.all(reviews.map(async (review) => ({
             ...review,
             username: (await this.reviewService.getReviewerName(review.user_id))[0]
                 .username,
             restaurantName: (await this.reviewService.getReviewRestaurantName(review.restaurant_id))[0].name,
+            photo: (await this.reviewService.getReviewPhoto(review.review_id))[0]
+                ?.photo_url,
         })));
     }
     async getReviewByID(params) {
@@ -39,10 +53,13 @@ let ReviewController = class ReviewController {
             username: (await this.reviewService.getReviewerName(review.user_id))[0]
                 .username,
             restaurantName: (await this.reviewService.getReviewRestaurantName(review.restaurant_id))[0].name,
+            photo: (await this.reviewService.getReviewPhoto(params.review_id))[0]
+                ?.photo_url,
         };
     }
-    async createReview(createReviewDto) {
-        return (await this.reviewService.createReview(createReviewDto))[0];
+    async createReview(body, photoCategory) {
+        const photoCategoryID = (await this.reviewService.getPhotoCategoryID(photoCategory))[0]?.photo_category_id;
+        return (await this.reviewService.createReview(body.createReviewDto, body.restaurantID, photoCategoryID, body.fileExtension))[0];
     }
     async updateReview(params, updateReviewDto) {
         const reviewFound = await this.reviewService.getReviewByID(params.review_id);
@@ -66,13 +83,15 @@ let ReviewController = class ReviewController {
 exports.ReviewController = ReviewController;
 __decorate([
     (0, common_1.Get)(),
+    (0, swagger_1.ApiQuery)({ name: 'restaurantID', required: false }),
     openapi.ApiResponse({ status: 200, type: [require("./dto/entity/review.entity").ReviewEntity] }),
+    __param(0, (0, common_1.Query)('restaurantID', new common_1.DefaultValuePipe(''))),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], ReviewController.prototype, "getReviews", null);
 __decorate([
-    (0, common_1.Get)(':review_id'),
+    (0, common_1.Get)('id/:review_id'),
     (0, swagger_1.ApiParam)({ name: 'review_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: require("./dto/entity/review.entity").ReviewEntity }),
     __param(0, (0, common_1.Param)()),
@@ -82,14 +101,16 @@ __decorate([
 ], ReviewController.prototype, "getReviewByID", null);
 __decorate([
     (0, common_1.Post)(),
+    (0, swagger_1.ApiQuery)({ name: 'photoCategory', required: false }),
     openapi.ApiResponse({ status: 201, type: Object }),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Query)('photoCategory', new common_1.DefaultValuePipe('Review'))),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_review_dto_1.CreateReviewDto]),
+    __metadata("design:paramtypes", [create_review_dto_1.CreateReviewDtoExtended, String]),
     __metadata("design:returntype", Promise)
 ], ReviewController.prototype, "createReview", null);
 __decorate([
-    (0, common_1.Put)(':review_id'),
+    (0, common_1.Put)('id/:review_id'),
     (0, swagger_1.ApiParam)({ name: 'review_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),
@@ -99,7 +120,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ReviewController.prototype, "updateReview", null);
 __decorate([
-    (0, common_1.Delete)(':review_id'),
+    (0, common_1.Delete)('id/:review_id'),
     (0, swagger_1.ApiParam)({ name: 'review_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),

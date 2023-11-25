@@ -1,4 +1,4 @@
-import { Restaurant } from 'src/restaurant/interfaces/restaurant.interface';
+import { Restaurant } from '../../interfaces/restaurant.interface';
 export declare class RestaurantEntity implements Restaurant {
     restaurant_id: string;
     name: string;
@@ -10,7 +10,7 @@ export declare class RestaurantEntity implements Restaurant {
     phone: string;
     intro: string;
     opening_hours: string;
-    cover_image?: string;
+    cover_image_url?: string;
     active: boolean;
     averageRating: number;
     reviewCount: number;

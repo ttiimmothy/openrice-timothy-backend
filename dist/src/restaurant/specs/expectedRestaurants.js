@@ -13,7 +13,7 @@ exports.expectedRestaurants = [
         phone: '6471231234',
         intro: 'intro',
         opening_hours: 'hour',
-        cover_image: 'image.png',
+        cover_image_url: 'image.png',
         active: true,
         created_at: new Date('2023-11-18'),
         modified_at: new Date('2023-11-18'),

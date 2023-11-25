@@ -33,15 +33,25 @@ let RestaurantService = class RestaurantService {
             .where('restaurant_id', id);
     }
     async createRestaurant(restaurant) {
-        return await this.knex
+        const restaurantDetail = await this.knex
             .insert({
-            ...restaurant,
+            ...restaurant.restaurant,
             created_at: new Date(),
             modified_at: new Date(),
             active: true,
         })
             .into('restaurant')
             .returning('*');
+        if (restaurant.fileExtension) {
+            return await this.knex('restaurant')
+                .update({
+                cover_image_url: `${process.env.IMAGE_PREFIX}/${restaurantDetail[0].restaurant_id}/cover_image_url.${restaurant.fileExtension}`,
+                modified_at: new Date(),
+            })
+                .where('restaurant_id', restaurantDetail[0].restaurant_id)
+                .returning('*');
+        }
+        return restaurantDetail;
     }
     async updateRestaurant(id, restaurant) {
         return await this.knex('restaurant')

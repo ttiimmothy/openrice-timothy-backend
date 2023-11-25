@@ -8,7 +8,9 @@ export declare class PhotoController {
     getPhotoByID(params: {
         photo_id: string;
     }): Promise<PhotoEntity>;
-    createPhoto(createPhotoDto: CreatePhotoDto): Promise<PhotoEntity>;
+    getReviewPhotos(restaurantID: string): Promise<PhotoEntity[]>;
+    getMenuPhotos(restaurantID: string): Promise<PhotoEntity[]>;
+    createPhoto(createPhotoDto: CreatePhotoDto, photoCategory: string): Promise<PhotoEntity[]>;
     deletePhoto(params: {
         photo_id: string;
     }): Promise<PhotoEntity | {

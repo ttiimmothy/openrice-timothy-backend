@@ -25,8 +25,8 @@ let ReviewService = class ReviewService {
     async getReviewByID(id) {
         return await this.knex.select('*').from('review').where('review_id', id);
     }
-    async createReview(review) {
-        return await this.knex
+    async createReview(review, restaurantID, photo_category_id, fileExtension) {
+        const reviewDetail = await this.knex
             .insert({
             ...review,
             created_at: new Date(),
@@ -35,6 +35,16 @@ let ReviewService = class ReviewService {
         })
             .into('review')
             .returning('*');
+        if (fileExtension) {
+            await this.knex
+                .insert({
+                photo_category_id,
+                review_id: reviewDetail[0].review_id,
+                photo_url: `${process.env.IMAGE_PREFIX}/${restaurantID}/photos/${reviewDetail[0].review_id}.${fileExtension}`,
+            })
+                .into('review_photo');
+        }
+        return reviewDetail;
     }
     async updateReview(id, review) {
         return await this.knex('review')
@@ -59,6 +69,18 @@ let ReviewService = class ReviewService {
             .select('name')
             .from('restaurant')
             .where('restaurant_id', restaurantID);
+    }
+    async getReviewPhoto(reviewID) {
+        return await this.knex
+            .select('photo_url')
+            .from('review_photo')
+            .where('review_id', reviewID);
+    }
+    async getPhotoCategoryID(photoCategoryName) {
+        return await this.knex
+            .select('photo_category_id')
+            .from('photo_category')
+            .where('name', photoCategoryName);
     }
 };
 exports.ReviewService = ReviewService;

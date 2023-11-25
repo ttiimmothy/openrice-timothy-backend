@@ -1,4 +1,4 @@
-import { PhotoCategory } from 'src/photoCategory/interfaces/photoCategory.interface';
+import { PhotoCategory } from '../../interfaces/photoCategory.interface';
 export declare class PhotoCategoryEntity implements PhotoCategory {
     photo_category_id: string;
     name: string;

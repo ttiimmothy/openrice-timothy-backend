@@ -6,8 +6,6 @@ exports.expectedReviews = [
         review_id: '123',
         user_id: '123',
         restaurant_id: '123',
-        username: 'Timothy',
-        restaurantName: 'restaurant',
         title: 'title',
         content: 'content',
         rating: 1,

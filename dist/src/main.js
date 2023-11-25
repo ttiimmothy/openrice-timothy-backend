@@ -6,12 +6,13 @@ const swagger_1 = require("@nestjs/swagger");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const helmet_1 = require("helmet");
-dotenv.config({ path: __dirname + '/../../src/secrets/.env' });
+dotenv.config({ path: __dirname + '/../../src/secrets/keys/.env' });
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.use(cors({
         origin: [
             'http://localhost:3865',
+            'http://localhost:3870',
             'https://openricecanadafrontend.vercel.app',
             'https://ttiimmothy.github.io',
         ],

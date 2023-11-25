@@ -37,7 +37,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], PhotoCategoryController.prototype, "getPhotoCategories", null);
 __decorate([
-    (0, common_1.Get)(':photo_category_id'),
+    (0, common_1.Get)('id/:photo_category_id'),
     (0, swagger_1.ApiParam)({ name: 'photo_category_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: require("./dto/entity/photoCategory.entity").PhotoCategoryEntity }),
     __param(0, (0, common_1.Param)()),
@@ -47,7 +47,7 @@ __decorate([
 ], PhotoCategoryController.prototype, "getPhotoCategoryByID", null);
 exports.PhotoCategoryController = PhotoCategoryController = __decorate([
     (0, swagger_1.ApiTags)('photo category'),
-    (0, common_1.Controller)('api/photo-category'),
+    (0, common_1.Controller)('api/photo/category'),
     __metadata("design:paramtypes", [photoCategory_service_1.PhotoCategoryService])
 ], PhotoCategoryController);
 //# sourceMappingURL=photoCategory.controller.js.map
