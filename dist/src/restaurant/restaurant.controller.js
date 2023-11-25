@@ -25,11 +25,11 @@ let RestaurantController = class RestaurantController {
         this.restaurantService = restaurantService;
     }
     async getRestaurants(limit, offset, name) {
-        let filterRestaurants;
+        let restaurantsFiltered;
         const restaurants = await this.restaurantService.getRestaurants(limit, offset);
         if (name) {
-            filterRestaurants = restaurants.filter((restaurant) => restaurant.name.toLowerCase().includes(name.toLowerCase()));
-            return Promise.all(filterRestaurants.map(async (restaurant) => ({
+            restaurantsFiltered = restaurants.filter((restaurant) => restaurant.name.toLowerCase().includes(name.toLowerCase()));
+            return Promise.all(restaurantsFiltered.map(async (restaurant) => ({
                 ...restaurant,
                 averageRating: await this.restaurantService.getAverageRating(restaurant.restaurant_id),
                 reviewCount: await this.restaurantService.getReviewCount(restaurant.restaurant_id),
@@ -79,7 +79,7 @@ __decorate([
     (0, swagger_1.ApiQuery)({ name: 'name', required: false }),
     (0, swagger_1.ApiQuery)({ name: 'role', enum: UserRole_1.UserRole, required: false }),
     openapi.ApiResponse({ status: 200, type: [require("./dto/entity/restaurant.entity").RestaurantEntity] }),
-    __param(0, (0, common_1.Query)('limit', new common_1.DefaultValuePipe('10'), common_1.ParseIntPipe)),
+    __param(0, (0, common_1.Query)('limit', new common_1.DefaultValuePipe('100'), common_1.ParseIntPipe)),
     __param(1, (0, common_1.Query)('offset', new common_1.DefaultValuePipe('0'), common_1.ParseIntPipe)),
     __param(2, (0, common_1.Query)('name', new common_1.DefaultValuePipe(''))),
     __metadata("design:type", Function),
@@ -87,7 +87,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], RestaurantController.prototype, "getRestaurants", null);
 __decorate([
-    (0, common_1.Get)(':restaurant_id'),
+    (0, common_1.Get)('id/:restaurant_id'),
     (0, swagger_1.ApiParam)({ name: 'restaurant_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: require("./dto/entity/restaurant.entity").RestaurantEntity }),
     __param(0, (0, common_1.Param)()),
@@ -104,7 +104,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], RestaurantController.prototype, "createRestaurant", null);
 __decorate([
-    (0, common_1.Put)(':restaurant_id'),
+    (0, common_1.Put)('id/:restaurant_id'),
     (0, swagger_1.ApiParam)({ name: 'restaurant_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),
@@ -114,7 +114,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], RestaurantController.prototype, "updateRestaurant", null);
 __decorate([
-    (0, common_1.Delete)(':restaurant_id'),
+    (0, common_1.Delete)('id/:restaurant_id'),
     (0, swagger_1.ApiParam)({ name: 'restaurant_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),

@@ -5,6 +5,9 @@ export declare class PhotoService {
     constructor(knex: Knex);
     getPhotos(): Promise<any[]>;
     getPhotoByID(id: string): Promise<any[]>;
-    createPhoto(photo: CreatePhotoDto): Promise<any[]>;
+    getReviewPhotos(id: string): Promise<any[]>;
+    getMenuPhotos(id: string): Promise<any[]>;
+    createPhoto(photo: CreatePhotoDto, photo_category_id: string, photoCategory: string): Promise<any[]>;
     deletePhoto(id: string): Promise<any[]>;
+    getPhotoCategoryID(photoCategoryName: string): Promise<any[]>;
 }

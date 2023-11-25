@@ -9,7 +9,7 @@ export declare const expectedRestaurants: {
     phone: string;
     intro: string;
     opening_hours: string;
-    cover_image: string;
+    cover_image_url: string;
     active: boolean;
     created_at: Date;
     modified_at: Date;

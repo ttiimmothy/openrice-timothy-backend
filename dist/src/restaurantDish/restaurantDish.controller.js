@@ -50,7 +50,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], RestaurantDishController.prototype, "getRestaurantDishes", null);
 __decorate([
-    (0, common_1.Get)(':restaurant_dish_id'),
+    (0, common_1.Get)('id/:restaurant_dish_id'),
     (0, swagger_1.ApiParam)({ name: 'restaurant_dish_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: require("./dto/entity/restaurantDish.entity").RestaurantDishEntity }),
     __param(0, (0, common_1.Param)()),
@@ -67,7 +67,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], RestaurantDishController.prototype, "createRestaurantDish", null);
 __decorate([
-    (0, common_1.Delete)(':restaurant_dish_id'),
+    (0, common_1.Delete)('id/:restaurant_dish_id'),
     (0, swagger_1.ApiParam)({ name: 'restaurant_dish_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),
@@ -77,7 +77,7 @@ __decorate([
 ], RestaurantDishController.prototype, "deleteRestaurantDish", null);
 exports.RestaurantDishController = RestaurantDishController = __decorate([
     (0, swagger_1.ApiTags)('restaurant dish'),
-    (0, common_1.Controller)('api/restaurant-dish'),
+    (0, common_1.Controller)('api/restaurant/dish'),
     __metadata("design:paramtypes", [restaurantDish_service_1.RestaurantDishService])
 ], RestaurantDishController);
 //# sourceMappingURL=restaurantDish.controller.js.map

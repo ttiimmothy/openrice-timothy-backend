@@ -60,7 +60,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], RestaurantOwnerController.prototype, "getRestaurantOwners", null);
 __decorate([
-    (0, common_1.Get)(':restaurant_owner_id'),
+    (0, common_1.Get)('id/:restaurant_owner_id'),
     (0, swagger_1.ApiParam)({ name: 'restaurant_owner_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: require("./dto/entity/restaurantOwner.enttiy").RestaurantOwnerEntity }),
     __param(0, (0, common_1.Param)()),
@@ -77,7 +77,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], RestaurantOwnerController.prototype, "createRestaurantOwner", null);
 __decorate([
-    (0, common_1.Put)(':restaurant_owner_id'),
+    (0, common_1.Put)('id/:restaurant_owner_id'),
     (0, swagger_1.ApiParam)({ name: 'restaurant_owner_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),
@@ -87,7 +87,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], RestaurantOwnerController.prototype, "updateRestaurantOwner", null);
 __decorate([
-    (0, common_1.Delete)(':restaurant_owner_id'),
+    (0, common_1.Delete)('id/:restaurant_owner_id'),
     (0, swagger_1.ApiParam)({ name: 'restaurant_owner_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),
@@ -97,7 +97,7 @@ __decorate([
 ], RestaurantOwnerController.prototype, "deleteRestaurantOwner", null);
 exports.RestaurantOwnerController = RestaurantOwnerController = __decorate([
     (0, swagger_1.ApiTags)('restaurant owner'),
-    (0, common_1.Controller)('api/restaurant-owner'),
+    (0, common_1.Controller)('api/restaurant/owner'),
     __metadata("design:paramtypes", [restaurantOwner_service_1.RestaurantOwnerService])
 ], RestaurantOwnerController);
 //# sourceMappingURL=restaurantOwner.controller.js.map

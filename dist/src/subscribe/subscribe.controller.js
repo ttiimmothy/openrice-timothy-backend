@@ -50,7 +50,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], SubscribeController.prototype, "getSubscribes", null);
 __decorate([
-    (0, common_1.Get)(':subscribe_id'),
+    (0, common_1.Get)('id/:subscribe_id'),
     (0, swagger_1.ApiParam)({ name: 'subscribe_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: require("./dto/entity/subscribe.entity").SubscribeEntity }),
     __param(0, (0, common_1.Param)()),
@@ -67,7 +67,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], SubscribeController.prototype, "createSubscribe", null);
 __decorate([
-    (0, common_1.Delete)(':subscribe_id'),
+    (0, common_1.Delete)('id/:subscribe_id'),
     (0, swagger_1.ApiParam)({ name: 'subscribe_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),

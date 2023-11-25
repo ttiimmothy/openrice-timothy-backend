@@ -37,7 +37,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], PaymentMethodController.prototype, "getPaymentMethods", null);
 __decorate([
-    (0, common_1.Get)(':payment_method_id'),
+    (0, common_1.Get)('id/:payment_method_id'),
     (0, swagger_1.ApiParam)({ name: 'payment_method_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: require("./dto/entity/paymentMethod.entity").PaymentMethodEntity }),
     __param(0, (0, common_1.Param)()),

@@ -56,7 +56,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "getUsers", null);
 __decorate([
-    (0, common_1.Get)(':user_id'),
+    (0, common_1.Get)('id/:user_id'),
     (0, swagger_1.ApiParam)({ name: 'user_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: require("./dto/entity/user.entity").UserEntity }),
     __param(0, (0, common_1.Param)()),
@@ -65,7 +65,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "getUserByID", null);
 __decorate([
-    (0, common_1.Put)(':user_id'),
+    (0, common_1.Put)('id/:user_id'),
     (0, swagger_1.ApiParam)({ name: 'user_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),
@@ -75,7 +75,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "updateUser", null);
 __decorate([
-    (0, common_1.Delete)(':user_id'),
+    (0, common_1.Delete)('id/:user_id'),
     (0, swagger_1.ApiParam)({ name: 'user_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)()),

@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateReviewDto = void 0;
+exports.CreateReviewDtoExtended = exports.CreateReviewDto = void 0;
 const openapi = require("@nestjs/swagger");
 const swagger_1 = require("@nestjs/swagger");
 class CreateReviewDto {
@@ -69,4 +69,22 @@ __decorate([
     }),
     __metadata("design:type", Date)
 ], CreateReviewDto.prototype, "visited_date", void 0);
+class CreateReviewDtoExtended {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { createReviewDto: { required: true, type: () => require("./create_review.dto").CreateReviewDto }, restaurantID: { required: true, type: () => String }, fileExtension: { required: false, type: () => String } };
+    }
+}
+exports.CreateReviewDtoExtended = CreateReviewDtoExtended;
+__decorate([
+    (0, swagger_1.ApiProperty)({ type: CreateReviewDto }),
+    __metadata("design:type", CreateReviewDto)
+], CreateReviewDtoExtended.prototype, "createReviewDto", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ type: String }),
+    __metadata("design:type", String)
+], CreateReviewDtoExtended.prototype, "restaurantID", void 0);
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: String }),
+    __metadata("design:type", String)
+], CreateReviewDtoExtended.prototype, "fileExtension", void 0);
 //# sourceMappingURL=create_review.dto.js.map

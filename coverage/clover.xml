@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1700484695061" clover="3.2.0">
-  <project timestamp="1700484695061" name="All files">
-    <metrics statements="550" coveredstatements="543" conditionals="39" coveredconditionals="37" methods="143" coveredmethods="139" elements="732" coveredelements="719" complexity="0" loc="550" ncloc="550" packages="42" files="77" classes="77"/>
+<coverage generated="1700871524169" clover="3.2.0">
+  <project timestamp="1700871524169" name="All files">
+    <metrics statements="600" coveredstatements="582" conditionals="47" coveredconditionals="45" methods="153" coveredmethods="150" elements="800" coveredelements="777" complexity="0" loc="600" ncloc="600" packages="42" files="78" classes="78"/>
     <package name="src">
-      <metrics statements="29" coveredstatements="29" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <metrics statements="44" coveredstatements="29" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
       <file name="app.controller.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/app.controller.ts">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="1" count="2" type="stmt"/>
@@ -31,16 +31,34 @@
         <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="46" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
       </file>
       <file name="app.service.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/app.service.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
+      </file>
+      <file name="main.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/main.ts">
+        <metrics statements="15" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.dish">
@@ -122,16 +140,16 @@
       </file>
     </package>
     <package name="src.global.csp">
-      <metrics statements="15" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
+      <metrics statements="15" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
       <file name="csp.middleware.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/global/csp/csp.middleware.ts">
-        <metrics statements="7" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
       </file>
       <file name="csp.module.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/global/csp/csp.module.ts">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -143,8 +161,8 @@
       </file>
       <file name="csp.service.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/global/csp/csp.service.ts">
         <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
       </file>
     </package>
@@ -211,9 +229,9 @@
       <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <file name="UserRole.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/global/utils/enums/UserRole.ts">
         <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="1" count="12" type="cond" truecount="2" falsecount="0"/>
-        <line num="2" count="12" type="stmt"/>
-        <line num="3" count="12" type="stmt"/>
+        <line num="1" count="13" type="cond" truecount="2" falsecount="0"/>
+        <line num="2" count="13" type="stmt"/>
+        <line num="3" count="13" type="stmt"/>
       </file>
     </package>
     <package name="src.paymentMethod">
@@ -256,26 +274,32 @@
       </file>
     </package>
     <package name="src.photo">
-      <metrics statements="30" coveredstatements="30" conditionals="2" coveredconditionals="2" methods="10" coveredmethods="10"/>
+      <metrics statements="44" coveredstatements="44" conditionals="7" coveredconditionals="7" methods="15" coveredmethods="15"/>
       <file name="photo.controller.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/photo/photo.controller.ts">
-        <metrics statements="17" coveredstatements="17" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
+        <metrics statements="23" coveredstatements="23" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7"/>
         <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
         <line num="19" count="2" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="26" count="2" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="34" count="2" type="stmt"/>
-        <line num="37" count="2" type="stmt"/>
-        <line num="38" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
         <line num="39" count="1" type="stmt"/>
-        <line num="41" count="1" type="stmt"/>
+        <line num="44" count="2" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="69" count="2" type="stmt"/>
+        <line num="72" count="2" type="stmt"/>
+        <line num="73" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
       </file>
       <file name="photo.module.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/photo/photo.module.ts">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -286,33 +310,43 @@
         <line num="11" count="1" type="stmt"/>
       </file>
       <file name="photo.service.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/photo/photo.service.ts">
-        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+        <metrics statements="16" coveredstatements="16" conditionals="5" coveredconditionals="5" methods="8" coveredmethods="8"/>
         <line num="1" count="3" type="stmt"/>
         <line num="2" count="3" type="stmt"/>
         <line num="6" count="3" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="22" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="56" count="1" type="cond" truecount="3" falsecount="0"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.photo.dto">
-      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="create_photo.dto.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/photo/dto/create_photo.dto.ts">
-        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
         <line num="14" count="2" type="stmt"/>
         <line num="20" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.photo.specs">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="expectedPhotos.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/photo/specs/expectedPhotos.ts">
+      <file name="expectedReviewPhotos.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/photo/specs/expectedReviewPhotos.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="2" type="stmt"/>
+        <line num="1" count="4" type="stmt"/>
       </file>
     </package>
     <package name="src.photoCategory">
@@ -322,12 +356,12 @@
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
         <line num="9" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
       </file>
       <file name="photoCategory.module.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/photoCategory/photoCategory.module.ts">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -351,11 +385,11 @@
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="expectedPhotoCategories.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/photoCategory/specs/expectedPhotoCategories.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="3" type="stmt"/>
+        <line num="1" count="6" type="stmt"/>
       </file>
     </package>
     <package name="src.restaurant">
-      <metrics statements="50" coveredstatements="50" conditionals="5" coveredconditionals="5" methods="17" coveredmethods="17"/>
+      <metrics statements="53" coveredstatements="53" conditionals="6" coveredconditionals="6" methods="17" coveredmethods="17"/>
       <file name="restaurant.controller.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/restaurant/restaurant.controller.ts">
         <metrics statements="32" coveredstatements="32" conditionals="5" coveredconditionals="5" methods="9" coveredmethods="9"/>
         <line num="1" count="2" type="stmt"/>
@@ -400,20 +434,23 @@
         <line num="11" count="1" type="stmt"/>
       </file>
       <file name="restaurant.service.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/restaurant/restaurant.service.ts">
-        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8"/>
+        <metrics statements="16" coveredstatements="16" conditionals="1" coveredconditionals="1" methods="8" coveredmethods="8"/>
         <line num="1" count="3" type="stmt"/>
         <line num="2" count="3" type="stmt"/>
         <line num="7" count="3" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="38" count="1" type="stmt"/>
-        <line num="45" count="1" type="stmt"/>
-        <line num="52" count="1" type="stmt"/>
-        <line num="55" count="1" type="stmt"/>
-        <line num="58" count="1" type="stmt"/>
-        <line num="62" count="1" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="36" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.restaurant.dto">
@@ -431,7 +468,7 @@
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="expectedRestaurants.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/restaurant/specs/expectedRestaurants.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="8" type="stmt"/>
+        <line num="1" count="9" type="stmt"/>
       </file>
     </package>
     <package name="src.restaurantDish">
@@ -563,10 +600,10 @@
         <line num="1" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="src.restaurantPayment">
-      <metrics statements="30" coveredstatements="30" conditionals="2" coveredconditionals="2" methods="10" coveredmethods="10"/>
-      <file name="restaurantPayment.controller.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/restaurantPayment/restaurantPayment.controller.ts">
-        <metrics statements="17" coveredstatements="17" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
+    <package name="src.restaurantPaymentMethod">
+      <metrics statements="31" coveredstatements="31" conditionals="2" coveredconditionals="2" methods="10" coveredmethods="10"/>
+      <file name="restaurantPaymentMethod.controller.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/restaurantPaymentMethod/restaurantPaymentMethod.controller.ts">
+        <metrics statements="18" coveredstatements="18" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
@@ -574,18 +611,19 @@
         <line num="9" count="2" type="stmt"/>
         <line num="11" count="2" type="stmt"/>
         <line num="15" count="2" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="21" count="2" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="32" count="2" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
-        <line num="44" count="2" type="stmt"/>
-        <line num="48" count="2" type="stmt"/>
-        <line num="51" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="52" count="1" type="stmt"/>
-        <line num="58" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="58" count="2" type="stmt"/>
+        <line num="61" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
       </file>
-      <file name="restaurantPayment.module.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/restaurantPayment/restaurantPayment.module.ts">
+      <file name="restaurantPaymentMethod.module.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/restaurantPaymentMethod/restaurantPaymentMethod.module.ts">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -593,7 +631,7 @@
         <line num="4" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
       </file>
-      <file name="restaurantPayment.service.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/restaurantPayment/restaurantPayment.service.ts">
+      <file name="restaurantPaymentMethod.service.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/restaurantPaymentMethod/restaurantPaymentMethod.service.ts">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
         <line num="1" count="3" type="stmt"/>
         <line num="2" count="3" type="stmt"/>
@@ -601,13 +639,13 @@
         <line num="7" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="src.restaurantPayment.dto">
+    <package name="src.restaurantPaymentMethod.dto">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="create_restaurant_payment.dto.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/restaurantPayment/dto/create_restaurant_payment.dto.ts">
+      <file name="create_restaurant_payment_method.dto.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/restaurantPaymentMethod/dto/create_restaurant_payment_method.dto.ts">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
@@ -615,43 +653,49 @@
         <line num="15" count="2" type="stmt"/>
       </file>
     </package>
-    <package name="src.restaurantPayment.specs">
+    <package name="src.restaurantPaymentMethod.specs">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="expectedRestaurantPayments.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/restaurantPayment/specs/expectedRestaurantPayments.ts">
+      <file name="expectedRestaurantPaymentMethods.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/restaurantPaymentMethod/specs/expectedRestaurantPaymentMethods.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.review">
-      <metrics statements="42" coveredstatements="42" conditionals="4" coveredconditionals="4" methods="15" coveredmethods="15"/>
+      <metrics statements="53" coveredstatements="53" conditionals="6" coveredconditionals="6" methods="19" coveredmethods="19"/>
       <file name="review.controller.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/review/review.controller.ts">
-        <metrics statements="26" coveredstatements="26" conditionals="4" coveredconditionals="4" methods="7" coveredmethods="7"/>
+        <metrics statements="32" coveredstatements="32" conditionals="5" coveredconditionals="5" methods="9" coveredmethods="9"/>
         <line num="1" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
         <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
         <line num="14" count="2" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
-        <line num="22" count="2" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="38" count="2" type="stmt"/>
-        <line num="41" count="1" type="stmt"/>
-        <line num="44" count="1" type="stmt"/>
-        <line num="55" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="31" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
         <line num="56" count="1" type="stmt"/>
-        <line num="61" count="2" type="stmt"/>
-        <line num="65" count="2" type="stmt"/>
-        <line num="68" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="69" count="1" type="stmt"/>
-        <line num="73" count="1" type="stmt"/>
-        <line num="79" count="2" type="stmt"/>
-        <line num="82" count="2" type="stmt"/>
-        <line num="85" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="86" count="1" type="stmt"/>
-        <line num="88" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="72" count="2" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="92" count="2" type="stmt"/>
+        <line num="98" count="1" type="stmt"/>
+        <line num="101" count="1" type="stmt"/>
+        <line num="113" count="2" type="stmt"/>
+        <line num="117" count="2" type="stmt"/>
+        <line num="120" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="121" count="1" type="stmt"/>
+        <line num="125" count="1" type="stmt"/>
+        <line num="131" count="2" type="stmt"/>
+        <line num="134" count="2" type="stmt"/>
+        <line num="137" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="138" count="1" type="stmt"/>
+        <line num="140" count="1" type="stmt"/>
       </file>
       <file name="review.module.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/review/review.module.ts">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -662,24 +706,29 @@
         <line num="11" count="1" type="stmt"/>
       </file>
       <file name="review.service.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/review/review.service.ts">
-        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8"/>
+        <metrics statements="16" coveredstatements="16" conditionals="1" coveredconditionals="1" methods="10" coveredmethods="10"/>
         <line num="1" count="3" type="stmt"/>
         <line num="2" count="3" type="stmt"/>
         <line num="7" count="3" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="38" count="1" type="stmt"/>
-        <line num="45" count="1" type="stmt"/>
-        <line num="52" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="34" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="69" count="1" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="83" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.review.dto">
-      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="create_review.dto.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/review/dto/create_review.dto.ts">
-        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
@@ -689,6 +738,10 @@
         <line num="34" count="2" type="stmt"/>
         <line num="40" count="2" type="stmt"/>
         <line num="46" count="2" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
       </file>
       <file name="update_review.dto.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/review/dto/update_review.dto.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -905,8 +958,8 @@
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="expectedUsers.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/userRelated/user/specs/expectedUsers.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="8" type="stmt"/>
-        <line num="3" count="8" type="stmt"/>
+        <line num="1" count="9" type="stmt"/>
+        <line num="3" count="9" type="stmt"/>
       </file>
     </package>
   </project>

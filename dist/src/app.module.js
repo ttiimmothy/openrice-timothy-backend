@@ -16,7 +16,7 @@ const dish_module_1 = require("./dish/dish.module");
 const restaurantDish_module_1 = require("./restaurantDish/restaurantDish.module");
 const photo_module_1 = require("./photo/photo.module");
 const restaurantOwner_module_1 = require("./restaurantOwner/restaurantOwner.module");
-const restaurantPayment_module_1 = require("./restaurantPayment/restaurantPayment.module");
+const restaurantPaymentMethod_module_1 = require("./restaurantPaymentMethod/restaurantPaymentMethod.module");
 const review_module_1 = require("./review/review.module");
 const subscribe_module_1 = require("./subscribe/subscribe.module");
 const district_module_1 = require("./district/district.module");
@@ -44,7 +44,7 @@ exports.AppModule = AppModule = __decorate([
             photoCategory_module_1.PhotoCategoryModule,
             restaurantDish_module_1.RestaurantDishModule,
             restaurantOwner_module_1.RestaurantOwnerModule,
-            restaurantPayment_module_1.RestaurantPaymentModule,
+            restaurantPaymentMethod_module_1.RestaurantPaymentMethodModule,
             review_module_1.ReviewModule,
             subscribe_module_1.SubscribeModule,
             auth_module_1.AuthModule,

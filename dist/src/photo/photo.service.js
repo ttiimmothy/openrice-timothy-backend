@@ -20,26 +20,65 @@ let PhotoService = class PhotoService {
         this.knex = knex;
     }
     async getPhotos() {
-        return await this.knex.select('*').from('photo');
+        return await this.knex.select('*').from('review_photo');
     }
     async getPhotoByID(id) {
-        return await this.knex.select('*').from('photo').where('photo_id', id);
+        const reviewPhoto = await this.knex
+            .select('*')
+            .from('review_photo')
+            .where('review_photo_id', id);
+        const menuPhoto = await this.knex
+            .select('*')
+            .from('menu_photo')
+            .where('menu_photo_id', id);
+        if (reviewPhoto.length > 0) {
+            return reviewPhoto;
+        }
+        else {
+            return menuPhoto;
+        }
     }
-    async createPhoto(photo) {
+    async getReviewPhotos(id) {
         return await this.knex
-            .insert({
-            ...photo,
-            created_at: new Date(),
-            active: true,
-        })
-            .into('photo')
-            .returning('*');
+            .select('*')
+            .from('review_photo')
+            .leftOuterJoin('review', 'review_photo.review_id', 'review.review_id')
+            .andWhere('review.restaurant_id', id)
+            .andWhere('review_photo.active', true);
+    }
+    async getMenuPhotos(id) {
+        return await this.knex
+            .select('*')
+            .from('menu_photo')
+            .leftOuterJoin('restaurant', 'menu_photo.restaurant_id', 'restaurant.restaurant_id')
+            .andWhere('menu_photo.restaurant_id', id)
+            .andWhere('menu_photo.active', true);
+    }
+    async createPhoto(photo, photo_category_id, photoCategory) {
+        if (photo.restaurantID && photo.imageName) {
+            return await this.knex
+                .insert({
+                photo_category_id,
+                restaurant_id: photo.restaurantID,
+                photo_url: `${process.env.IMAGE_PREFIX}/${photo.restaurantID}/${photoCategory.toLowerCase()}s/${photo.imageName}`,
+                created_at: new Date(),
+                active: true,
+            })
+                .into('menu_photo')
+                .returning('*');
+        }
     }
     async deletePhoto(id) {
-        return await this.knex('photo')
+        return await this.knex('review_photo')
             .update({ active: false })
-            .where('photo_id', id)
+            .where('review_photo_id', id)
             .returning('*');
+    }
+    async getPhotoCategoryID(photoCategoryName) {
+        return await this.knex
+            .select('photo_category_id')
+            .from('photo_category')
+            .where('name', photoCategoryName);
     }
 };
 exports.PhotoService = PhotoService;

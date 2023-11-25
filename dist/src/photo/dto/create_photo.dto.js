@@ -14,29 +14,41 @@ const openapi = require("@nestjs/swagger");
 const swagger_1 = require("@nestjs/swagger");
 class CreatePhotoDto {
     static _OPENAPI_METADATA_FACTORY() {
-        return { photo_category_id: { required: true, type: () => String }, review_id: { required: true, type: () => String }, address: { required: true, type: () => String } };
+        return { photo_category_id: { required: false, type: () => String }, review_id: { required: false, type: () => String }, photo_url: { required: false, type: () => String }, restaurantID: { required: false, type: () => String }, imageName: { required: false, type: () => String } };
     }
 }
 exports.CreatePhotoDto = CreatePhotoDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({
+    (0, swagger_1.ApiPropertyOptional)({
         description: 'The foreign key (UUID) from photo category table',
         type: String,
     }),
     __metadata("design:type", String)
 ], CreatePhotoDto.prototype, "photo_category_id", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({
+    (0, swagger_1.ApiPropertyOptional)({
         description: 'The foreign key (UUID) from review table',
         type: String,
     }),
     __metadata("design:type", String)
 ], CreatePhotoDto.prototype, "review_id", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({
-        description: 'The storage address of photo',
+    (0, swagger_1.ApiPropertyOptional)({
+        description: 'The url of photo',
         type: String,
     }),
     __metadata("design:type", String)
-], CreatePhotoDto.prototype, "address", void 0);
+], CreatePhotoDto.prototype, "photo_url", void 0);
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({
+        type: String,
+    }),
+    __metadata("design:type", String)
+], CreatePhotoDto.prototype, "restaurantID", void 0);
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({
+        type: String,
+    }),
+    __metadata("design:type", String)
+], CreatePhotoDto.prototype, "imageName", void 0);
 //# sourceMappingURL=create_photo.dto.js.map
