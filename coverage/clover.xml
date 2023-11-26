@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1700871524169" clover="3.2.0">
-  <project timestamp="1700871524169" name="All files">
-    <metrics statements="600" coveredstatements="582" conditionals="47" coveredconditionals="45" methods="153" coveredmethods="150" elements="800" coveredelements="777" complexity="0" loc="600" ncloc="600" packages="42" files="78" classes="78"/>
+<coverage generated="1700971201926" clover="3.2.0">
+  <project timestamp="1700971201926" name="All files">
+    <metrics statements="607" coveredstatements="589" conditionals="49" coveredconditionals="47" methods="156" coveredmethods="153" elements="812" coveredelements="789" complexity="0" loc="607" ncloc="607" packages="42" files="78" classes="78"/>
     <package name="src">
       <metrics statements="44" coveredstatements="29" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
       <file name="app.controller.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/app.controller.ts">
@@ -97,7 +97,7 @@
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="expectedDishes.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/dish/specs/expectedDishes.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="3" type="stmt"/>
+        <line num="1" count="4" type="stmt"/>
       </file>
     </package>
     <package name="src.district">
@@ -389,9 +389,9 @@
       </file>
     </package>
     <package name="src.restaurant">
-      <metrics statements="53" coveredstatements="53" conditionals="6" coveredconditionals="6" methods="17" coveredmethods="17"/>
+      <metrics statements="60" coveredstatements="60" conditionals="8" coveredconditionals="8" methods="20" coveredmethods="20"/>
       <file name="restaurant.controller.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/restaurant/restaurant.controller.ts">
-        <metrics statements="32" coveredstatements="32" conditionals="5" coveredconditionals="5" methods="9" coveredmethods="9"/>
+        <metrics statements="36" coveredstatements="36" conditionals="5" coveredconditionals="5" methods="11" coveredmethods="11"/>
         <line num="1" count="2" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
         <line num="14" count="2" type="stmt"/>
@@ -411,19 +411,23 @@
         <line num="63" count="1" type="stmt"/>
         <line num="77" count="2" type="stmt"/>
         <line num="80" count="1" type="stmt"/>
-        <line num="83" count="1" type="stmt"/>
-        <line num="95" count="2" type="stmt"/>
-        <line num="98" count="1" type="stmt"/>
-        <line num="105" count="2" type="stmt"/>
-        <line num="109" count="2" type="stmt"/>
-        <line num="112" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="113" count="1" type="stmt"/>
-        <line num="120" count="1" type="stmt"/>
-        <line num="126" count="2" type="stmt"/>
-        <line num="129" count="2" type="stmt"/>
-        <line num="132" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="133" count="1" type="stmt"/>
-        <line num="137" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+        <line num="82" count="1" type="stmt"/>
+        <line num="96" count="2" type="stmt"/>
+        <line num="99" count="1" type="stmt"/>
+        <line num="102" count="1" type="stmt"/>
+        <line num="114" count="2" type="stmt"/>
+        <line num="117" count="1" type="stmt"/>
+        <line num="124" count="2" type="stmt"/>
+        <line num="128" count="2" type="stmt"/>
+        <line num="131" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="132" count="1" type="stmt"/>
+        <line num="139" count="1" type="stmt"/>
+        <line num="145" count="2" type="stmt"/>
+        <line num="148" count="2" type="stmt"/>
+        <line num="151" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="152" count="1" type="stmt"/>
+        <line num="156" count="1" type="stmt"/>
       </file>
       <file name="restaurant.module.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/restaurant/restaurant.module.ts">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -434,23 +438,26 @@
         <line num="11" count="1" type="stmt"/>
       </file>
       <file name="restaurant.service.ts" path="/Users/timoptimothy/Developer/github_repo/openrice_timothy_backend/src/restaurant/restaurant.service.ts">
-        <metrics statements="16" coveredstatements="16" conditionals="1" coveredconditionals="1" methods="8" coveredmethods="8"/>
+        <metrics statements="19" coveredstatements="19" conditionals="3" coveredconditionals="3" methods="9" coveredmethods="9"/>
         <line num="1" count="3" type="stmt"/>
         <line num="2" count="3" type="stmt"/>
         <line num="7" count="3" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="26" count="2" type="stmt"/>
-        <line num="36" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="46" count="1" type="stmt"/>
-        <line num="50" count="1" type="stmt"/>
-        <line num="57" count="1" type="stmt"/>
-        <line num="64" count="1" type="stmt"/>
+        <line num="11" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="53" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
         <line num="67" count="1" type="stmt"/>
-        <line num="70" count="1" type="stmt"/>
         <line num="74" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+        <line num="84" count="1" type="stmt"/>
+        <line num="87" count="1" type="stmt"/>
+        <line num="91" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.restaurant.dto">
