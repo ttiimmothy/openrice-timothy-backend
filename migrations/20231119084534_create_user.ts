@@ -12,6 +12,11 @@ export async function up(knex: Knex): Promise<void> {
       table.text('username').notNullable();
       table.text('password').notNullable();
       table.string('role');
+      table.uuid('user_role_id');
+      table.foreign('user_role_id').references('user_role.user_role_id');
+      table.text('profile_picture_url');
+      table.uuid('image_id');
+      table.foreign('image_id').references('image.image_id');
       table.boolean('active').notNullable().defaultTo(true);
       table.timestamp('created_at').notNullable().defaultTo(knex.fn.now());
       table.timestamp('modified_at');
