@@ -25,8 +25,8 @@ let UserService = class UserService {
     async getUserByID(id) {
         return await this.knex.select('*').from('user').where('user_id', id);
     }
-    async createUser(user) {
-        return await this.knex
+    async createUser(user, fileExtension) {
+        const userDetail = await this.knex
             .insert({
             ...user,
             role: user.role ? user.role : 'User',
@@ -36,12 +36,36 @@ let UserService = class UserService {
         })
             .into('user')
             .returning('*');
+        if (fileExtension) {
+            return await this.knex('user')
+                .update({
+                profile_picture_url: `${process.env.IMAGE_PREFIX}/user/${userDetail[0].user_id}/profile_picture_url.${fileExtension}`,
+            })
+                .where('user_id', userDetail[0].user_id)
+                .returning('*');
+        }
+        return userDetail;
     }
-    async updateUser(id, user) {
-        return await this.knex('user')
-            .update({ ...user, modified_at: new Date() })
-            .where('user_id', id)
-            .returning('*');
+    async updateUserProfile(id, user, fileExtension) {
+        if (fileExtension) {
+            return await this.knex('user')
+                .update({
+                ...user,
+                profile_picture_url: `${process.env.IMAGE_PREFIX}/user/${id}/profile_picture_url.${fileExtension}`,
+                modified_at: new Date(),
+            })
+                .where('user_id', id)
+                .returning('*');
+        }
+        else {
+            return await this.knex('user')
+                .update({
+                ...user,
+                modified_at: new Date(),
+            })
+                .where('user_id', id)
+                .returning('*');
+        }
     }
     async deleteUser(id) {
         return await this.knex('user')

@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.down = exports.up = void 0;
 async function up(knex) {
-    if (!(await knex.schema.hasTable('subscribe'))) {
-        await knex.schema.createTable('subscribe', (table) => {
+    if (!(await knex.schema.hasTable('restaurant_owner'))) {
+        await knex.schema.createTable('restaurant_owner', (table) => {
             table
-                .uuid('subscribe_id')
+                .uuid('restaurant_owner_id')
                 .primary()
                 .defaultTo(knex.raw('gen_random_uuid()'))
                 .notNullable();
@@ -20,7 +20,7 @@ async function up(knex) {
 }
 exports.up = up;
 async function down(knex) {
-    await knex.schema.dropTableIfExists('subscribe');
+    await knex.schema.dropTableIfExists('restaurant_owner');
 }
 exports.down = down;
-//# sourceMappingURL=20231119083356_create_subscribe.js.map
+//# sourceMappingURL=20231123045006_create_restaurant_owner.js.map

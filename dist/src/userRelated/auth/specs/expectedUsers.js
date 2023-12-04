@@ -10,6 +10,7 @@ exports.expectedUsers = [
         password: 'Timothy',
         role: UserRole_1.UserRole.Admin,
         active: true,
+        profile_picture_url: 'image.png',
         created_at: new Date('2023-11-14'),
         modified_at: new Date('2023-11-14'),
     },

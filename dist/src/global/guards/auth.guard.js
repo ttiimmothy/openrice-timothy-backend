@@ -18,10 +18,6 @@ let AuthGuard = class AuthGuard {
     }
     canActivate(context) {
         const request = context.switchToHttp().getRequest();
-        if (request.headers.authorization?.split(' ')[0] !== 'Bearer') {
-            console.log({ message: 'invalid token' });
-            return false;
-        }
         const token = request.headers.authorization?.split(' ')[1];
         if (token) {
             const payload = this.authService.validateToken(token);
@@ -31,6 +27,7 @@ let AuthGuard = class AuthGuard {
                     username: payload.username,
                     email: payload.email,
                     role: payload.role,
+                    profile_picture_url: payload.profile_picture_url,
                 };
                 return true;
             }

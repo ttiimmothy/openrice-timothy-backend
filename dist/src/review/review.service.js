@@ -40,7 +40,7 @@ let ReviewService = class ReviewService {
                 .insert({
                 photo_category_id,
                 review_id: reviewDetail[0].review_id,
-                photo_url: `${process.env.IMAGE_PREFIX}/${restaurantID}/photos/${reviewDetail[0].review_id}.${fileExtension}`,
+                photo_url: `${process.env.IMAGE_PREFIX}/restaurant/${restaurantID}/photos/${reviewDetail[0].review_id}.${fileExtension}`,
             })
                 .into('review_photo');
         }

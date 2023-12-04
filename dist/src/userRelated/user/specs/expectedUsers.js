@@ -9,6 +9,7 @@ exports.expectedUsers = [
         email: 'dinosauli2006@mgmail.com',
         password: 'Timothy',
         role: UserRole_1.UserRole.Admin,
+        profile_picture_url: 'image.png',
         active: true,
         created_at: new Date('2023-11-14'),
         modified_at: new Date('2023-11-14'),

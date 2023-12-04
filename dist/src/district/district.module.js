@@ -8,7 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DistrictModule = void 0;
 const common_1 = require("@nestjs/common");
-const knex_module_1 = require("../global/modules/knex.module");
 const district_controller_1 = require("./district.controller");
 const district_service_1 = require("./district.service");
 let DistrictModule = class DistrictModule {
@@ -16,7 +15,6 @@ let DistrictModule = class DistrictModule {
 exports.DistrictModule = DistrictModule;
 exports.DistrictModule = DistrictModule = __decorate([
     (0, common_1.Module)({
-        imports: [knex_module_1.KnexModule],
         controllers: [district_controller_1.DistrictController],
         providers: [district_service_1.DistrictService],
     })

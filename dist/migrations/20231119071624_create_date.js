@@ -2,22 +2,22 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.down = exports.up = void 0;
 async function up(knex) {
-    if (!(await knex.schema.hasTable('district'))) {
-        await knex.schema.createTable('district', (table) => {
+    if (!(await knex.schema.hasTable('date'))) {
+        await knex.schema.createTable('date', (table) => {
             table
-                .uuid('district_id')
+                .uuid('date_id')
                 .primary()
                 .defaultTo(knex.raw('gen_random_uuid()'))
                 .notNullable();
-            table.text('name').notNullable();
+            table.text('date_name').notNullable();
             table.boolean('active').notNullable().defaultTo(true);
-            table.timestamp('created_at').notNullable().defaultTo(knex.fn.now());
+            table.timestamps(false, true);
         });
     }
 }
 exports.up = up;
 async function down(knex) {
-    await knex.schema.dropTableIfExists('district');
+    await knex.schema.dropTableIfExists('date');
 }
 exports.down = down;
-//# sourceMappingURL=20231119071624_create_district.js.map
+//# sourceMappingURL=20231119071624_create_date.js.map

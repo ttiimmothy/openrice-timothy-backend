@@ -37,7 +37,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], DistrictController.prototype, "getDistricts", null);
 __decorate([
-    (0, common_1.Get)(':district_id'),
+    (0, common_1.Get)('id/:district_id'),
     (0, swagger_1.ApiParam)({ name: 'district_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: require("./dto/entity/district.entity").DistrictEntity }),
     __param(0, (0, common_1.Param)()),

@@ -40,7 +40,7 @@ let PhotoService = class PhotoService {
     }
     async getReviewPhotos(id) {
         return await this.knex
-            .select('*')
+            .select('review_photo.*')
             .from('review_photo')
             .leftOuterJoin('review', 'review_photo.review_id', 'review.review_id')
             .andWhere('review.restaurant_id', id)
@@ -48,7 +48,7 @@ let PhotoService = class PhotoService {
     }
     async getMenuPhotos(id) {
         return await this.knex
-            .select('*')
+            .select('menu_photo.*')
             .from('menu_photo')
             .leftOuterJoin('restaurant', 'menu_photo.restaurant_id', 'restaurant.restaurant_id')
             .andWhere('menu_photo.restaurant_id', id)
@@ -60,7 +60,7 @@ let PhotoService = class PhotoService {
                 .insert({
                 photo_category_id,
                 restaurant_id: photo.restaurantID,
-                photo_url: `${process.env.IMAGE_PREFIX}/${photo.restaurantID}/${photoCategory.toLowerCase()}s/${photo.imageName}`,
+                photo_url: `${process.env.IMAGE_PREFIX}/restaurant/${photo.restaurantID}/${photoCategory.toLowerCase()}s/${photo.imageName}`,
                 created_at: new Date(),
                 active: true,
             })

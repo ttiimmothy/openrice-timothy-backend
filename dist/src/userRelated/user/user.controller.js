@@ -15,9 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
-const user_service_1 = require("./user.service");
-const update_user_dto_1 = require("./dto/update_user.dto");
 const swagger_1 = require("@nestjs/swagger");
+const jwtSimple = require("jwt-simple");
+const user_service_1 = require("./user.service");
+const auth_guard_1 = require("../../global/guards/auth.guard");
+const update_user_dto_1 = require("./dto/update_user.dto");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
@@ -28,10 +30,34 @@ let UserController = class UserController {
     async getUserByID(params) {
         return (await this.userService.getUserByID(params.user_id))[0];
     }
-    async updateUser(params, updateUserDto) {
+    async updateUserProfile(params, body, req) {
         const userFound = await this.userService.getUserByID(params.user_id);
         if (userFound) {
-            return (await this.userService.updateUser(params.user_id, updateUserDto))[0];
+            const users = await this.userService.getUsers();
+            if (users.find((user) => user.username === body.updateUserDto.username) &&
+                req.user.username !== body.updateUserDto.username) {
+                return {
+                    message: 'The username cannot be updated because this username is already used',
+                };
+            }
+            if (users.find((user) => user.email === body.updateUserDto.email) &&
+                req.user.email !== body.updateUserDto.email) {
+                return {
+                    message: 'The email cannot be updated because this email is already used',
+                };
+            }
+            const user = (await this.userService.updateUserProfile(params.user_id, body.updateUserDto, body.fileExtension))[0];
+            const token = jwtSimple.encode(user, process.env.JWT_SECRET);
+            return {
+                userInfo: {
+                    user_id: user.user_id,
+                    email: user.email,
+                    username: user.username,
+                    role: user.role,
+                    profile_picture_url: user.profile_picture_url,
+                },
+                token,
+            };
         }
         else {
             return { message: 'This user cannot be found' };
@@ -65,15 +91,17 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "getUserByID", null);
 __decorate([
-    (0, common_1.Put)('id/:user_id'),
+    (0, common_1.Put)('profile/:user_id'),
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     (0, swagger_1.ApiParam)({ name: 'user_id', required: true, type: String }),
-    openapi.ApiResponse({ status: 200, type: Object }),
+    openapi.ApiResponse({ status: 200, type: require("./dto/entity/user.entity").UpdateUserProfileResponse }),
     __param(0, (0, common_1.Param)()),
     __param(1, (0, common_1.Body)()),
+    __param(2, (0, common_1.Request)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, update_user_dto_1.UpdateUserDto]),
+    __metadata("design:paramtypes", [Object, update_user_dto_1.UpdateUserDtoExtended, Object]),
     __metadata("design:returntype", Promise)
-], UserController.prototype, "updateUser", null);
+], UserController.prototype, "updateUserProfile", null);
 __decorate([
     (0, common_1.Delete)('id/:user_id'),
     (0, swagger_1.ApiParam)({ name: 'user_id', required: true, type: String }),

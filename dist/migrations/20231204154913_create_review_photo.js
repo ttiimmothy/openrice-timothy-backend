@@ -16,6 +16,8 @@ async function up(knex) {
                 .foreign('photo_category_id')
                 .references('photo_category.photo_category_id');
             table.text('photo_url').notNullable();
+            table.uuid('image_id');
+            table.foreign('image_id').references('image.image_id');
             table.boolean('active').notNullable().defaultTo(true);
             table.timestamp('created_at').notNullable().defaultTo(knex.fn.now());
         });
@@ -26,4 +28,4 @@ async function down(knex) {
     await knex.schema.dropTableIfExists('review_photo');
 }
 exports.down = down;
-//# sourceMappingURL=20231119084224_create_review_photo.js.map
+//# sourceMappingURL=20231204154913_create_review_photo.js.map

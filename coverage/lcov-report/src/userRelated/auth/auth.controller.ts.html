@@ -146,7 +146,18 @@
 <a name='L81'></a><a href='#L81'>81</a>
 <a name='L82'></a><a href='#L82'>82</a>
 <a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -182,7 +193,6 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -194,8 +204,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -212,6 +233,7 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -243,7 +265,7 @@ import * as jwtSimple from 'jwt-simple';
 import { AuthService } from './auth.service';
 import { UserService } from '../user/user.service';
 import { User } from '../user/interfaces/user.interface';
-import { CreateUserDto } from '../user/dto/create_user.dto';
+import { CreateUserDtoExtended } from '../user/dto/create_user.dto';
 import { checkPassword, hashPassword } from '../../global/lib/hash';
 import { AuthGuard } from '../../global/guards/auth.guard';
 import { LoginResponse, RegisterResponse } from './dto/entity/auth.entity';
@@ -259,26 +281,36 @@ export class AuthController {
 &nbsp;
   @Post('register')
   async register(
-    @Body() createUserDto: CreateUserDto,
+    @Body() body: CreateUserDtoExtended,
   ): Promise&lt;RegisterResponse&gt; {
     const users: User[] = await this.userService.getUsers();
-    if (users.find((user) =&gt; user.username === createUserDto.username)) {
+    if (users.find((user) =&gt; user.username === body.createUserDto.username)) {
       return { message: 'This username is already used' };
     }
-&nbsp;
-    if (users.find((user) =&gt; user.email === createUserDto.email)) {
+    if (users.find((user) =&gt; user.email === body.createUserDto.email)) {
       return { message: 'This email is already used' };
     }
 &nbsp;
     const newUser = (
-      await this.userService.createUser({
-        ...createUserDto,
-        password: await hashPassword(createUserDto.password),
-      })
+      await this.userService.createUser(
+        {
+          ...body.createUserDto,
+          password: await hashPassword(body.createUserDto.password),
+        },
+        body.fileExtension,
+      )
     )[0];
-&nbsp;
     const token = jwtSimple.encode(newUser, process.env.JWT_SECRET as string);
-    return { token };
+    return {
+      user: {
+        user_id: newUser.user_id,
+        username: newUser.username,
+        email: newUser.email,
+        role: newUser.role,
+        profile_picture_url: newUser.profile_picture_url,
+      },
+      token,
+    };
   }
 &nbsp;
   @Post('login')
@@ -296,9 +328,10 @@ export class AuthController {
       const token = jwtSimple.encode(user, process.env.JWT_SECRET as string);
       const userFound = {
         user_id: user.user_id,
-        email: user.email,
         username: user.username,
+        email: user.email,
         role: user.role,
+        profile_picture_url: user.profile_picture_url,
       };
       return { user: userFound, token };
     } else {
@@ -319,7 +352,7 @@ export class AuthController {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-26T04:00:01.882Z
+                at 2023-12-04T16:26:28.462Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -1,7 +1,11 @@
 import { UserRole } from '../../../global/utils/enums/UserRole';
 export declare class CreateUserDto {
-    email: string;
     username: string;
+    email: string;
     password: string;
     role?: UserRole;
+}
+export declare class CreateUserDtoExtended {
+    createUserDto: CreateUserDto;
+    fileExtension?: string;
 }
