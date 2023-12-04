@@ -29,4 +29,4 @@ async function down(knex) {
     await knex.schema.dropTableIfExists('review');
 }
 exports.down = down;
-//# sourceMappingURL=20231119083932_create_review.js.map
+//# sourceMappingURL=20231203214324_create_review.js.map

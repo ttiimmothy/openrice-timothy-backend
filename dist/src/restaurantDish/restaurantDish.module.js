@@ -8,7 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RestaurantDishModule = void 0;
 const common_1 = require("@nestjs/common");
-const knex_module_1 = require("../global/modules/knex.module");
 const restaurantDish_controller_1 = require("./restaurantDish.controller");
 const restaurantDish_service_1 = require("./restaurantDish.service");
 let RestaurantDishModule = class RestaurantDishModule {
@@ -16,7 +15,6 @@ let RestaurantDishModule = class RestaurantDishModule {
 exports.RestaurantDishModule = RestaurantDishModule;
 exports.RestaurantDishModule = RestaurantDishModule = __decorate([
     (0, common_1.Module)({
-        imports: [knex_module_1.KnexModule],
         controllers: [restaurantDish_controller_1.RestaurantDishController],
         providers: [restaurantDish_service_1.RestaurantDishService],
     })

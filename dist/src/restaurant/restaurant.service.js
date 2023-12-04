@@ -20,11 +20,24 @@ let RestaurantService = class RestaurantService {
         this.knex = knex;
     }
     async getRestaurants(limit, offset) {
+        if (limit) {
+            return await this.knex
+                .select('*')
+                .from('restaurant')
+                .limit(limit)
+                .offset(offset);
+        }
+        else {
+            return await this.knex.select('*').from('restaurant').offset(offset);
+        }
+    }
+    async getRestaurantsByDish(dish) {
         return await this.knex
-            .select('*')
+            .select('restaurant.*')
             .from('restaurant')
-            .limit(limit)
-            .offset(offset);
+            .leftOuterJoin('restaurant_dish', 'restaurant.restaurant_id', 'restaurant_dish.restaurant_id')
+            .leftOuterJoin('dish', 'restaurant_dish.dish_id', 'dish.dish_id')
+            .where('dish.name', dish);
     }
     async getRestaurantByID(id) {
         return await this.knex
@@ -32,20 +45,20 @@ let RestaurantService = class RestaurantService {
             .from('restaurant')
             .where('restaurant_id', id);
     }
-    async createRestaurant(restaurant) {
+    async createRestaurant(restaurant, fileExtension) {
         const restaurantDetail = await this.knex
             .insert({
-            ...restaurant.restaurant,
+            ...restaurant,
             created_at: new Date(),
             modified_at: new Date(),
             active: true,
         })
             .into('restaurant')
             .returning('*');
-        if (restaurant.fileExtension) {
+        if (fileExtension) {
             return await this.knex('restaurant')
                 .update({
-                cover_image_url: `${process.env.IMAGE_PREFIX}/${restaurantDetail[0].restaurant_id}/cover_image_url.${restaurant.fileExtension}`,
+                cover_image_url: `${process.env.IMAGE_PREFIX}/restaurant/${restaurantDetail[0].restaurant_id}/cover_image_url.${fileExtension}`,
                 modified_at: new Date(),
             })
                 .where('restaurant_id', restaurantDetail[0].restaurant_id)

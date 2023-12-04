@@ -8,7 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RestaurantPaymentMethodModule = void 0;
 const common_1 = require("@nestjs/common");
-const knex_module_1 = require("../global/modules/knex.module");
 const restaurantPaymentMethod_controller_1 = require("./restaurantPaymentMethod.controller");
 const restaurantPaymentMethod_service_1 = require("./restaurantPaymentMethod.service");
 let RestaurantPaymentMethodModule = class RestaurantPaymentMethodModule {
@@ -16,7 +15,6 @@ let RestaurantPaymentMethodModule = class RestaurantPaymentMethodModule {
 exports.RestaurantPaymentMethodModule = RestaurantPaymentMethodModule;
 exports.RestaurantPaymentMethodModule = RestaurantPaymentMethodModule = __decorate([
     (0, common_1.Module)({
-        imports: [knex_module_1.KnexModule],
         controllers: [restaurantPaymentMethod_controller_1.RestaurantPaymentMethodController],
         providers: [restaurantPaymentMethod_service_1.RestaurantPaymentMethodService],
     })

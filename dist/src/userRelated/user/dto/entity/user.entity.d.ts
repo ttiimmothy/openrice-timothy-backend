@@ -10,3 +10,14 @@ export declare class UserEntity implements User {
     active: boolean;
     role: UserRole;
 }
+export declare class UpdateUserProfileResponse {
+    userInfo?: {
+        user_id: string;
+        email: string;
+        username: string;
+        role: string;
+        profile_picture_url: string;
+    };
+    message?: string;
+    token?: string;
+}

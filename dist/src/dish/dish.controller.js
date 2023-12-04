@@ -37,7 +37,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], DishController.prototype, "getDishes", null);
 __decorate([
-    (0, common_1.Get)(':dish_id'),
+    (0, common_1.Get)('id/:dish_id'),
     (0, swagger_1.ApiParam)({ name: 'dish_id', required: true, type: String }),
     openapi.ApiResponse({ status: 200, type: require("./dto/entity/dish.entity").DishEntity }),
     __param(0, (0, common_1.Param)()),

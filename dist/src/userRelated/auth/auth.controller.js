@@ -28,20 +28,29 @@ let AuthController = class AuthController {
         this.authService = authService;
         this.userService = userService;
     }
-    async register(createUserDto) {
+    async register(body) {
         const users = await this.userService.getUsers();
-        if (users.find((user) => user.username === createUserDto.username)) {
+        if (users.find((user) => user.username === body.createUserDto.username)) {
             return { message: 'This username is already used' };
         }
-        if (users.find((user) => user.email === createUserDto.email)) {
+        if (users.find((user) => user.email === body.createUserDto.email)) {
             return { message: 'This email is already used' };
         }
         const newUser = (await this.userService.createUser({
-            ...createUserDto,
-            password: await (0, hash_1.hashPassword)(createUserDto.password),
-        }))[0];
+            ...body.createUserDto,
+            password: await (0, hash_1.hashPassword)(body.createUserDto.password),
+        }, body.fileExtension))[0];
         const token = jwtSimple.encode(newUser, process.env.JWT_SECRET);
-        return { token };
+        return {
+            user: {
+                user_id: newUser.user_id,
+                username: newUser.username,
+                email: newUser.email,
+                role: newUser.role,
+                profile_picture_url: newUser.profile_picture_url,
+            },
+            token,
+        };
     }
     async login(credentials) {
         const users = await this.userService.getUsers();
@@ -54,9 +63,10 @@ let AuthController = class AuthController {
             const token = jwtSimple.encode(user, process.env.JWT_SECRET);
             const userFound = {
                 user_id: user.user_id,
-                email: user.email,
                 username: user.username,
+                email: user.email,
                 role: user.role,
+                profile_picture_url: user.profile_picture_url,
             };
             return { user: userFound, token };
         }
@@ -74,7 +84,7 @@ __decorate([
     openapi.ApiResponse({ status: 201, type: require("./dto/entity/auth.entity").RegisterResponse }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_user_dto_1.CreateUserDto]),
+    __metadata("design:paramtypes", [create_user_dto_1.CreateUserDtoExtended]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "register", null);
 __decorate([

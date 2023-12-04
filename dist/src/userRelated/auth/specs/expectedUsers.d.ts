@@ -6,6 +6,7 @@ export declare const expectedUsers: {
     password: string;
     role: UserRole;
     active: boolean;
+    profile_picture_url: string;
     created_at: Date;
     modified_at: Date;
 }[];
