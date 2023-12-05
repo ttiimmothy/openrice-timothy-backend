@@ -17,23 +17,26 @@ async function bootstrap() {
       origin: [
         'http://localhost:3865',
         'http://localhost:3870',
+        'http://localhost:3880',
         'https://openricecanadafrontend.vercel.app',
-        'https://ttiimmothy.github.io',
+        'https://ttiimmothy.github.io/openrice-timothy-frontend',
       ],
       credentials: true,
     }),
   );
-
   app.use(helmet());
 
   const config = new DocumentBuilder()
     .setTitle('Openrice Canada')
     .setDescription('The Openrice Canada API description')
-    .setVersion('0.0.1')
+    .setVersion('0.1.1')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api/swagger', app, document);
+  SwaggerModule.setup('api/swagger', app, document, {
+    customSiteTitle: 'Swagger API Documentation',
+    customfavIcon: '/static/recent_favicon.ico',
+  });
 
   await app.listen(process.env.PORT);
 }
