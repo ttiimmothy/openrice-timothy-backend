@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1701710280044" clover="3.2.0">
-  <project timestamp="1701710280044" name="All files">
-    <metrics statements="651" coveredstatements="633" conditionals="59" coveredconditionals="57" methods="159" coveredmethods="156" elements="869" coveredelements="846" complexity="0" loc="651" ncloc="651" packages="42" files="79" classes="79"/>
+<coverage generated="1701765912460" clover="3.2.0">
+  <project timestamp="1701765912460" name="All files">
+    <metrics statements="676" coveredstatements="658" conditionals="59" coveredconditionals="57" methods="159" coveredmethods="156" elements="894" coveredelements="871" complexity="0" loc="676" ncloc="676" packages="42" files="79" classes="79"/>
     <package name="src">
       <metrics statements="44" coveredstatements="29" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
       <file name="app.controller.ts" path="/Users/timoptimothy/Developer/github_repository/openrice_timothy_backend/src/app.controller.ts">
@@ -57,8 +57,8 @@
         <line num="29" count="0" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.dish">
@@ -452,7 +452,7 @@
       </file>
     </package>
     <package name="src.restaurant.dto">
-      <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="28" coveredstatements="28" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="create_restaurant.dto.ts" path="/Users/timoptimothy/Developer/github_repository/openrice_timothy_backend/src/restaurant/dto/create_restaurant.dto.ts">
         <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
@@ -468,12 +468,24 @@
         <line num="56" count="2" type="stmt"/>
         <line num="63" count="2" type="stmt"/>
         <line num="66" count="2" type="stmt"/>
-        <line num="68" count="2" type="stmt"/>
         <line num="71" count="2" type="stmt"/>
+        <line num="77" count="2" type="stmt"/>
       </file>
       <file name="update_restaurant.dto.ts" path="/Users/timoptimothy/Developer/github_repository/openrice_timothy_backend/src/restaurant/dto/update_restaurant.dto.ts">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="59" count="2" type="stmt"/>
+        <line num="65" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.restaurant.specs">
@@ -590,7 +602,7 @@
       </file>
     </package>
     <package name="src.restaurantOwner.dto">
-      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="create_restaurant_owner.dto.ts" path="/Users/timoptimothy/Developer/github_repository/openrice_timothy_backend/src/restaurantOwner/dto/create_restaurant_owner.dto.ts">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
@@ -599,8 +611,12 @@
         <line num="14" count="2" type="stmt"/>
       </file>
       <file name="update_restaurant_owner.dto.ts" path="/Users/timoptimothy/Developer/github_repository/openrice_timothy_backend/src/restaurantOwner/dto/update_restaurant_owner.dto.ts">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.restaurantOwner.specs">
@@ -734,7 +750,7 @@
       </file>
     </package>
     <package name="src.review.dto">
-      <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="23" coveredstatements="23" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="create_review.dto.ts" path="/Users/timoptimothy/Developer/github_repository/openrice_timothy_backend/src/review/dto/create_review.dto.ts">
         <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
@@ -749,11 +765,20 @@
         <line num="49" count="2" type="stmt"/>
         <line num="51" count="2" type="stmt"/>
         <line num="54" count="2" type="stmt"/>
-        <line num="57" count="2" type="stmt"/>
+        <line num="60" count="2" type="stmt"/>
       </file>
       <file name="update_review.dto.ts" path="/Users/timoptimothy/Developer/github_repository/openrice_timothy_backend/src/review/dto/update_review.dto.ts">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.review.specs">
@@ -985,8 +1010,8 @@
         <line num="21" count="2" type="stmt"/>
         <line num="28" count="2" type="stmt"/>
         <line num="31" count="2" type="stmt"/>
-        <line num="35" count="2" type="stmt"/>
-        <line num="38" count="2" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
       </file>
       <file name="update_user.dto.ts" path="/Users/timoptimothy/Developer/github_repository/openrice_timothy_backend/src/userRelated/user/dto/update_user.dto.ts">
         <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -999,7 +1024,7 @@
         <line num="28" count="2" type="stmt"/>
         <line num="31" count="2" type="stmt"/>
         <line num="33" count="2" type="stmt"/>
-        <line num="36" count="2" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.userRelated.user.specs">
