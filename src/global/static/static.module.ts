@@ -27,7 +27,7 @@ import { join } from 'path';
         'coverage',
         'lcov-report',
       ),
-      serveRoot: '/test/jest/coverage/e2e',
+      serveRoot: '/test/e2e/jest/coverage/api',
     }),
   ],
 })
