@@ -7,5 +7,5 @@ export declare class UpdateUserDto {
 }
 export declare class UpdateUserDtoExtended {
     updateUserDto: UpdateUserDto;
-    fileExtension: string;
+    fileExtension?: string;
 }

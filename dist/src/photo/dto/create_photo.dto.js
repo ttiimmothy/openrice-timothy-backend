@@ -41,7 +41,7 @@ __decorate([
 ], CreatePhotoDto.prototype, "photo_url", void 0);
 __decorate([
     (0, swagger_1.ApiPropertyOptional)({
-        description: 'The restaurant id',
+        description: 'The restaurant id (UUID)',
         type: String,
     }),
     __metadata("design:type", String)

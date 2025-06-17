@@ -54,7 +54,7 @@ let RestaurantOwnerController = class RestaurantOwnerController {
 exports.RestaurantOwnerController = RestaurantOwnerController;
 __decorate([
     (0, common_1.Get)(),
-    openapi.ApiResponse({ status: 200, type: [require("./dto/entity/restaurantOwner.enttiy").RestaurantOwnerEntity] }),
+    openapi.ApiResponse({ status: 200, type: [require("./dto/entity/restaurantOwner.entity").RestaurantOwnerEntity] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
@@ -62,7 +62,7 @@ __decorate([
 __decorate([
     (0, common_1.Get)('id/:restaurant_owner_id'),
     (0, swagger_1.ApiParam)({ name: 'restaurant_owner_id', required: true, type: String }),
-    openapi.ApiResponse({ status: 200, type: require("./dto/entity/restaurantOwner.enttiy").RestaurantOwnerEntity }),
+    openapi.ApiResponse({ status: 200, type: require("./dto/entity/restaurantOwner.entity").RestaurantOwnerEntity }),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
@@ -70,7 +70,7 @@ __decorate([
 ], RestaurantOwnerController.prototype, "getRestaurantOwnerByID", null);
 __decorate([
     (0, common_1.Post)(),
-    openapi.ApiResponse({ status: 201, type: require("./dto/entity/restaurantOwner.enttiy").RestaurantOwnerEntity }),
+    openapi.ApiResponse({ status: 201, type: require("./dto/entity/restaurantOwner.entity").RestaurantOwnerEntity }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_restaurant_owner_dto_1.CreateRestaurantOwnerDto]),

@@ -27,7 +27,7 @@ __decorate([
 ], CreateRestaurantOwnerDto.prototype, "user_id", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({
-        description: 'The foreign (UUID, restaurant_id) from restaurant table',
+        description: 'The foreign key (UUID, restaurant_id) from restaurant table',
         type: String,
     }),
     __metadata("design:type", String)

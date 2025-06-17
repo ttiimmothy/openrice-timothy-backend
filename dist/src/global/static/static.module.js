@@ -22,7 +22,7 @@ exports.StaticModule = StaticModule = __decorate([
             }),
             serve_static_1.ServeStaticModule.forRoot({
                 rootPath: (0, path_1.join)(__dirname, '..', '..', '..', '..', 'test', 'coverage', 'lcov-report'),
-                serveRoot: '/test/jest/coverage/e2e',
+                serveRoot: '/test/e2e/jest/coverage/api',
             }),
         ],
     })

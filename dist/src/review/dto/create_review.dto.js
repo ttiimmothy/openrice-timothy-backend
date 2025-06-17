@@ -76,15 +76,18 @@ class CreateReviewDtoExtended {
 }
 exports.CreateReviewDtoExtended = CreateReviewDtoExtended;
 __decorate([
-    (0, swagger_1.ApiProperty)({ type: CreateReviewDto }),
+    (0, swagger_1.ApiProperty)({ description: 'create review dto', type: CreateReviewDto }),
     __metadata("design:type", CreateReviewDto)
 ], CreateReviewDtoExtended.prototype, "createReviewDto", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ type: String }),
+    (0, swagger_1.ApiProperty)({ description: 'restaurant id (UUID)', type: String }),
     __metadata("design:type", String)
 ], CreateReviewDtoExtended.prototype, "restaurantID", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: String }),
+    (0, swagger_1.ApiPropertyOptional)({
+        description: 'file extension of the review photo',
+        type: String,
+    }),
     __metadata("design:type", String)
 ], CreateReviewDtoExtended.prototype, "fileExtension", void 0);
 //# sourceMappingURL=create_review.dto.js.map

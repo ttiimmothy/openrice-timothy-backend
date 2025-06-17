@@ -50,16 +50,19 @@ __decorate([
 ], UpdateUserDto.prototype, "role", void 0);
 class UpdateUserDtoExtended {
     static _OPENAPI_METADATA_FACTORY() {
-        return { updateUserDto: { required: true, type: () => require("./update_user.dto").UpdateUserDto }, fileExtension: { required: true, type: () => String } };
+        return { updateUserDto: { required: true, type: () => require("./update_user.dto").UpdateUserDto }, fileExtension: { required: false, type: () => String } };
     }
 }
 exports.UpdateUserDtoExtended = UpdateUserDtoExtended;
 __decorate([
-    (0, swagger_1.ApiProperty)({ type: UpdateUserDto }),
+    (0, swagger_1.ApiProperty)({ description: 'update user dto', type: UpdateUserDto }),
     __metadata("design:type", UpdateUserDto)
 ], UpdateUserDtoExtended.prototype, "updateUserDto", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ type: String }),
+    (0, swagger_1.ApiPropertyOptional)({
+        description: 'file extension of the profile picture',
+        type: String,
+    }),
     __metadata("design:type", String)
 ], UpdateUserDtoExtended.prototype, "fileExtension", void 0);
 //# sourceMappingURL=update_user.dto.js.map

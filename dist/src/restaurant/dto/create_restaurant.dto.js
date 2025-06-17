@@ -96,11 +96,17 @@ class CreateRestaurantDtoExtended {
 }
 exports.CreateRestaurantDtoExtended = CreateRestaurantDtoExtended;
 __decorate([
-    (0, swagger_1.ApiProperty)({ type: CreateRestaurantDto }),
+    (0, swagger_1.ApiProperty)({
+        description: 'create restaurant dto',
+        type: CreateRestaurantDto,
+    }),
     __metadata("design:type", CreateRestaurantDto)
 ], CreateRestaurantDtoExtended.prototype, "createRestaurantDto", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: String }),
+    (0, swagger_1.ApiPropertyOptional)({
+        description: 'file extension of the restaurant cover image',
+        type: String,
+    }),
     __metadata("design:type", String)
 ], CreateRestaurantDtoExtended.prototype, "fileExtension", void 0);
 //# sourceMappingURL=create_restaurant.dto.js.map

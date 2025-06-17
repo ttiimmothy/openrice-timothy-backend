@@ -17,8 +17,9 @@ const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const jwtSimple = require("jwt-simple");
-const user_service_1 = require("./user.service");
 const auth_guard_1 = require("../../global/guards/auth.guard");
+const hash_1 = require("../../global/lib/hash");
+const user_service_1 = require("./user.service");
 const update_user_dto_1 = require("./dto/update_user.dto");
 let UserController = class UserController {
     constructor(userService) {
@@ -46,7 +47,16 @@ let UserController = class UserController {
                     message: 'The email cannot be updated because this email is already used',
                 };
             }
-            const user = (await this.userService.updateUserProfile(params.user_id, body.updateUserDto, body.fileExtension))[0];
+            let user;
+            if (body.updateUserDto.password) {
+                user = (await this.userService.updateUserProfile(params.user_id, {
+                    ...body.updateUserDto,
+                    password: await (0, hash_1.hashPassword)(body.updateUserDto.password),
+                }, body.fileExtension))[0];
+            }
+            else {
+                user = (await this.userService.updateUserProfile(params.user_id, body.updateUserDto, body.fileExtension))[0];
+            }
             const token = jwtSimple.encode(user, process.env.JWT_SECRET);
             return {
                 userInfo: {

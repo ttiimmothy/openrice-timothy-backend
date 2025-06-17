@@ -56,12 +56,16 @@ class CreateUserDtoExtended {
 exports.CreateUserDtoExtended = CreateUserDtoExtended;
 __decorate([
     (0, swagger_1.ApiProperty)({
+        description: 'create user dto',
         type: CreateUserDto,
     }),
     __metadata("design:type", CreateUserDto)
 ], CreateUserDtoExtended.prototype, "createUserDto", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: String }),
+    (0, swagger_1.ApiPropertyOptional)({
+        description: 'file extension of the profile picture',
+        type: String,
+    }),
     __metadata("design:type", String)
 ], CreateUserDtoExtended.prototype, "fileExtension", void 0);
 //# sourceMappingURL=create_user.dto.js.map
